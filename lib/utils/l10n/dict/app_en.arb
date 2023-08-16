@@ -1,0 +1,38 @@
+{
+  "appTitle" : "Currency App",
+
+  "currency_param_curr_abbr" : "curr.",
+  "currency_param_prev_abbr" : "prev.",
+  "currency_param_curr" : "Current value",
+  "currency_param_prev" : "Previous value",
+  "currency_param_date" : "Last update",
+
+  "home_title" : "Currency App",
+  "home_search_hint" : "Search currency",
+
+  "auth_login_title" : "Welcome!",
+  "auth_login_email_hint" : "E-mail",
+  "auth_login_password_hint" : "Password",
+  "auth_login_submit" : "Login",
+  "auth_login_or" : "Or",
+  "auth_login_google_auth" : "Continue with Google",
+  "auth_login_register_hint_text" : "Don't have a Account?",
+  "auth_login_register_hint_button" : "Register",
+
+  "auth_register_title" : "Sign Up",
+  "auth_register_email_hint" : "E-mail",
+  "auth_register_username_hint" : "Username",
+  "auth_register_password_hint" : "Password",
+  "auth_register_duplicate_password_hint" : "Duplicate Password",
+  "auth_register_submit" : "Register",
+  "auth_register_login_hint_text" : "Already have an account?",
+  "auth_register_login_hint_button" : "Log In",
+
+  "preferences_title" : "Preferences",
+  "preferences_logout" : "Log Out",
+  "preferences_theme_switch" : "Dart mode",
+  "preferences_language_switch" : "Language",
+  "preferences_language_ru" : "Русский",
+  "preferences_language_en" : "English",
+  "preferences_base_currency" : "Base currency"
+}
