@@ -1,3 +1,4 @@
+import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,19 +19,25 @@ class _RunApplicationState extends State<RunApplication> {
     // lock screen rotation
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
+    /// TODO --> Change, when add DI
+    final messenger = Messenger();
+
     return ScreenUtilInit(
       splitScreenMode: true,
       designSize: const Size(390 , 844),
       builder: (_, __) {
-        return const MaterialApp(
+        return MaterialApp(
+
+          // Scaffold Messenger
+          scaffoldMessengerKey: messenger.key,
 
           // Localization
-          localizationsDelegates: [
+          localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: [
+          supportedLocales: const [
             Locale('en'), // English
             Locale('ru'), // Russian
           ],
