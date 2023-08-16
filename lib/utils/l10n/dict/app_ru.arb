@@ -1,0 +1,38 @@
+{
+  "appTitle" : "Currency App",
+
+  "currency_param_curr_abbr" : "текущ.",
+  "currency_param_prev_abbr" : "пред.",
+  "currency_param_curr" : "Текущее значение",
+  "currency_param_prev" : "Предыдущее значение",
+  "currency_param_date" : "Последнее обновление",
+
+  "home_title" : "Currency App",
+  "home_search_hint" : "Найти валюту",
+
+  "auth_login_title" : "Добро пожаловать!",
+  "auth_login_email_hint" : "Почта",
+  "auth_login_password_hint" : "Пароль",
+  "auth_login_submit" : "Войти",
+  "auth_login_or" : "Или",
+  "auth_login_google_auth" : "Войти с помощью Google",
+  "auth_login_register_hint_text" : "Вы не зарегистрированы?",
+  "auth_login_register_hint_button" : "Зарегистрироваться",
+
+  "auth_register_title" : "Регистарция",
+  "auth_register_email_hint" : "Почта",
+  "auth_register_username_hint" : "Имя пользователя",
+  "auth_register_password_hint" : "Пароль",
+  "auth_register_duplicate_password_hint" : "Повторите пароль",
+  "auth_register_submit" : "Зарегистрироваться",
+  "auth_register_login_hint_text" : "Уже зарегистрированы?",
+  "auth_register_login_hint_button" : "Войти",
+
+  "preferences_title" : "Настройки",
+  "preferences_logout" : "Выйти",
+  "preferences_theme_switch" : "Тёмная тема",
+  "preferences_language_switch" : "Язык",
+  "preferences_language_ru" : "Русский",
+  "preferences_language_en" : "English",
+  "preferences_base_currency" : "Базовая валюта"
+}
