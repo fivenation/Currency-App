@@ -7,7 +7,6 @@ import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class RunApplication extends StatefulWidget {
   const RunApplication({Key? key}) : super(key: key);
@@ -25,7 +24,7 @@ class _RunApplicationState extends State<RunApplication> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     /// TODO --> Change, when add DI
-    final messenger = Messenger();
+    final messenger = getIt<Messenger>();
     return MaterialApp(
 
       // Scaffold Messenger
