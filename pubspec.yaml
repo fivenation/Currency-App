@@ -23,6 +23,9 @@ dependencies:
   get_it: ^7.6.0
   injectable: ^2.3.0
 
+  # State Management
+  provider: ^6.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -35,3 +38,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/icons/
+  fonts:
+    - family: PTSans
+      fonts:
+        - asset: assets/fonts/PTSans-Regular.ttf
+        - asset: assets/fonts/PTSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/PTSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/PTSans-BoldItalic.ttf
+          weight: 700
+          style: italic
