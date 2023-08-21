@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 void main() => runZonedGuarded(() async {
   WidgetsFlutterBinding.ensureInitialized();
   getIt.init(environment: "dev");
+  await getIt.allReady();
   runApp(const RunApplication());
 }, (error, stackTrace) {
   logger.e("Error from runZoneGuarded", error: error);

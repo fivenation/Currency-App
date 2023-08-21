@@ -12,8 +12,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../presentation/theme/theme_manager.dart' as _i4;
-import '../../utils/scaffold_messenger.dart' as _i3;
+import '../../presentation/navigation/router.dart' as _i3;
+import '../../presentation/theme/theme_manager.dart' as _i5;
+import '../../utils/scaffold_messenger.dart' as _i4;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -26,8 +27,9 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    gh.lazySingleton<_i3.Messenger>(() => _i3.Messenger());
-    gh.lazySingleton<_i4.ThemeManager>(() => _i4.ThemeManager());
+    gh.singleton<_i3.AppRouter>(_i3.AppRouter());
+    gh.lazySingleton<_i4.Messenger>(() => _i4.Messenger());
+    gh.lazySingleton<_i5.ThemeManager>(() => _i5.ThemeManager());
     return this;
   }
 }
