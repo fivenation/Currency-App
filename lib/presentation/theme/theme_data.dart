@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTheme {
   AppTheme._();
 
-  static const _fontFamily = 'PT_Sans';
+  static const _fontFamily = 'PTSans';
 
   static const _lightColorScheme = AppColorScheme(
     darkPrimary:  Color(0xFF303F9F),
