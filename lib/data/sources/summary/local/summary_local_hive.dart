@@ -19,11 +19,6 @@ class SummaryLocalHiveImpl implements SummaryLocal {
     return SummaryLocalHiveImpl(summaryBox: summaryBox);
   }
 
-  @disposeMethod
-  void dispose() {
-    summaryBox.close();
-  }
-
   @override
   Future<SummaryData> update(SummaryData data) async {
     try {
