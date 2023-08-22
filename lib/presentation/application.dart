@@ -2,7 +2,10 @@ import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/theme/theme_data.dart';
 import 'package:currency_app/presentation/theme/theme_manager.dart';
+import 'package:currency_app/utils/l10n/S.dart';
 import 'package:currency_app/utils/l10n/app_localizations/app_localizations.dart';
+import 'package:currency_app/utils/l10n/locale_manager.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,22 +21,23 @@ class RunApplication extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     final messenger = getIt<Messenger>();
+    final appRouter = getIt<AppRouter>();
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: getIt<ThemeManager>()),
+        ChangeNotifierProvider.value(value: getIt<LocaleManager>()),
       ],
       child: ScreenUtilInit(
           splitScreenMode: true,
           designSize: const Size(390 , 844),
           builder: (context, __) {
-            final appRouter = getIt<AppRouter>();
-
             return MaterialApp.router(
 
               // Theme
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
-              themeMode: context.read<ThemeManager>().themeMode,
+              themeMode: context.watch<ThemeManager>().themeMode,
 
               // Scaffold Messenger
               scaffoldMessengerKey: messenger.key,
@@ -41,6 +45,7 @@ class RunApplication extends StatelessWidget {
               // Localization
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
+              locale: context.watch<LocaleManager>().locale,
 
               routerConfig: appRouter.router,
             );

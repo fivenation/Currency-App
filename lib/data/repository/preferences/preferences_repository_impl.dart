@@ -1,5 +1,6 @@
 import 'package:currency_app/data/sources/preferences/preferences_local.dart';
 import 'package:currency_app/domain/repository/preferences_repository.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: PreferencesRepository)

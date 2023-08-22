@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:currency_app/data/dto/preferences/hive_preferences_mapper.dart';
 import 'package:currency_app/data/dto/preferences/hive_preferences_object.dart';
 import 'package:currency_app/data/sources/preferences/preferences_local.dart';
 import 'package:currency_app/domain/models/preferences/preferences_data.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,6 +19,9 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
     await Hive.initFlutter();
     Hive.registerAdapter(PreferencesAdapter());
     final preferencesBox = await Hive.openBox<HivePreferencesObject>('preferences');
+    if (preferencesBox.isEmpty) {
+      preferencesBox.add(HivePreferencesObject(username: null, isDarkMode: null, language: null, baseCurrency: null, favoritesCurrency: null));
+    }
     return PreferencesLocalHiveImpl(preferencesBox: preferencesBox);
   }
 
@@ -25,6 +31,7 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
       final res = preferencesBox.values.first;
       return HivePreferencesMapper.fromHive(res);
     } catch(error) {
+      logger.e(error);
       rethrow;
     }
   }
@@ -35,6 +42,7 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
       await preferencesBox.putAt(0, HivePreferencesMapper.toHive(data));
       return HivePreferencesMapper.fromHive(preferencesBox.values.first);
     } catch(error) {
+      logger.e(error);
       rethrow;
     }
   }
