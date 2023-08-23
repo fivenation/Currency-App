@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
           children: [
             Text(S.of(context).appTitle, style: TextStyle(color: colorScheme.primaryText),),
             OutlinedButton(onPressed: () async => navigation.router.pushNamed(RouteNames.currency, pathParameters: {'name' : 'USD'}), child: Text('currency page'),),
+            OutlinedButton(onPressed: () async => navigation.router.pushNamed(RouteNames.login), child: Text('login page'),),
           ],
         ),
       ),
