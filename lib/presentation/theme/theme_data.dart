@@ -39,35 +39,38 @@ class AppTheme {
   static final _commonTextStyles = AppTextStyles(
     titleLarge: TextStyle(
       fontSize: 22.sp,
-      height: 28.h / 22.sp,
     ),
     bodyLarge: TextStyle(
-      fontSize: 12.sp,
-      height: 28.h / 12.sp,
+      fontSize: 18.sp,
       letterSpacing: 0.2.w,
     ),
     bodyMedium: TextStyle(
-      fontSize: 14.sp,
-      height: 28.h / 14.sp,
+      fontSize: 16.sp,
       letterSpacing: 0.15.w,
     ),
     bodySmall: TextStyle(
-      fontSize: 12.sp,
-      height: 28.h / 12.sp,
+      fontSize: 14.sp,
       letterSpacing: 0.1.w,
     ),
     appLogo: TextStyle(
       fontSize: 36.sp,
-      height: 36.h / 36.sp,
       letterSpacing: 1.w,
     ),
     headerLarge: TextStyle(
       fontSize: 54.sp,
-      height: 54.h / 54.sp,
     ),
     headerMedium: TextStyle(
       fontSize: 32.sp,
-      height: 32.h / 32.sp,
+    ),
+  );
+
+  static final FilledButtonThemeData _filledButtonThemeData = FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 16.w , vertical: 4.h),
+      alignment: Alignment.center,
+      minimumSize: Size(64.w, 42.h),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36.r)),
+      side: BorderSide.none,
     ),
   );
 
@@ -75,6 +78,7 @@ class AppTheme {
     return ThemeData(
       brightness: Brightness.light,
       fontFamily: _fontFamily,
+      filledButtonTheme: _filledButtonThemeData,
       extensions: <ThemeExtension<dynamic>>[
         _lightColorScheme,
         _commonTextStyles,
@@ -86,6 +90,7 @@ class AppTheme {
     return ThemeData(
       brightness: Brightness.dark,
       fontFamily: _fontFamily,
+      filledButtonTheme: _filledButtonThemeData,
       extensions: <ThemeExtension<dynamic>>[
         _darkColorScheme,
         _commonTextStyles,

@@ -53,3 +53,6 @@ flutter:
         - asset: assets/fonts/PTSans-BoldItalic.ttf
           weight: 700
           style: italic
+    - family: AppIcons
+      fonts:
+        - asset: assets/fonts/AppIcons.ttf

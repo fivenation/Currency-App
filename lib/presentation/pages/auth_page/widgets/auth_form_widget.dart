@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthFormWidget extends StatelessWidget {
 
   final Widget child;
+  final EdgeInsets? margin;
 
-  const AuthFormWidget({super.key, required this.child});
+  const AuthFormWidget({super.key, required this.child, this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class AuthFormWidget extends StatelessWidget {
     final colorScheme = theme.extension<AppColorScheme>()!;
 
     return Container(
+      margin: margin,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(20.r),
       decoration: BoxDecoration(
