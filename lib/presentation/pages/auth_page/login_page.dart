@@ -138,9 +138,14 @@ class _LoginPageState extends State<LoginPage> {
                                 color: colorScheme.onPrimary,
                                 size: 42.r,
                               ),
-                              Text(
-                                S.of(context).auth_login_google_auth,
-                                style: textStyles.bodyLarge!.copyWith(color: colorScheme.onPrimary, height: 1, ),
+                              Expanded(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    S.of(context).auth_login_google_auth,
+                                    style: textStyles.bodyLarge!.copyWith(color: colorScheme.onPrimary, height: 1),
+                                  ),
+                                ),
                               ),
                               const SizedBox.shrink(),
                             ],
@@ -149,21 +154,24 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 16.h, bottom: 4.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "${S.of(context).auth_login_register_hint_text} ",
-                              style: textStyles.bodyMedium!.copyWith(color: _textColor),
-                            ),
-                            InkWell(
-                              onTap: onRegisterButton,
-                              child: Text(
-                                S.of(context).auth_login_register_hint_button,
-                                style: textStyles.bodyMedium!.copyWith(color: colorScheme.accent),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${S.of(context).auth_login_register_hint_text} ",
+                                style: textStyles.bodyMedium!.copyWith(color: _textColor),
                               ),
-                            )
-                          ],
+                              InkWell(
+                                onTap: onRegisterButton,
+                                child: Text(
+                                  S.of(context).auth_login_register_hint_button,
+                                  style: textStyles.bodyMedium!.copyWith(color: colorScheme.accent, fontSize: 16.sp),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],
