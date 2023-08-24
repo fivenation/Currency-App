@@ -6,8 +6,9 @@ class AuthFormWidget extends StatelessWidget {
 
   final Widget child;
   final EdgeInsets? margin;
+  final GlobalKey<FormState> formKey;
 
-  const AuthFormWidget({super.key, required this.child, this.margin});
+  const AuthFormWidget({super.key, required this.child, this.margin, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,10 @@ class AuthFormWidget extends StatelessWidget {
             ),
           ]
       ),
-      child: child,
+      child: Form(
+        key: formKey,
+        child: child,
+      ),
     );
   }
 

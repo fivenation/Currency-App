@@ -4,6 +4,7 @@ import 'package:currency_app/domain/dependencies/service_locator.config.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/firebase_options.dart';
 import 'package:currency_app/presentation/application.dart';
+import 'package:currency_app/presentation/pages/auth_page/form_validator.dart';
 import 'package:currency_app/utils/logger.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
