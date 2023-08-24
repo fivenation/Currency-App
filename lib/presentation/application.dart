@@ -1,14 +1,14 @@
+import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/theme/theme_data.dart';
 import 'package:currency_app/presentation/theme/theme_manager.dart';
-import 'package:currency_app/utils/l10n/S.dart';
 import 'package:currency_app/utils/l10n/app_localizations/app_localizations.dart';
 import 'package:currency_app/utils/l10n/locale_manager.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +27,7 @@ class RunApplication extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(value: getIt<ThemeManager>()),
         ChangeNotifierProvider.value(value: getIt<LocaleManager>()),
+        BlocProvider.value(value: getIt<AuthorizationBloc>()..add(const AuthorizationEvent.checkAuth())),
       ],
       child: ScreenUtilInit(
           splitScreenMode: true,

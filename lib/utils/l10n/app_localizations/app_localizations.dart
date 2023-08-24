@@ -291,6 +291,30 @@ abstract class AppLocalizations {
   /// **'Password mismatch'**
   String get auth_invalid_password_duplicate_invalid;
 
+  /// No description provided for @auth_error_authorized.
+  ///
+  /// In en, this message translates to:
+  /// **'You are already logged in'**
+  String get auth_error_authorized;
+
+  /// No description provided for @auth_error_auth_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorization error. Try again later'**
+  String get auth_error_auth_error;
+
+  /// No description provided for @auth_error_auth_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Google authorization error. Try again later'**
+  String get auth_error_auth_google;
+
+  /// No description provided for @auth_error_registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration error. Try again later'**
+  String get auth_error_registration;
+
   /// No description provided for @preferences_title.
   ///
   /// In en, this message translates to:
@@ -332,6 +356,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Base currency'**
   String get preferences_base_currency;
+
+  /// No description provided for @error_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error!'**
+  String get error_unknown;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

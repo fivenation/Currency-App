@@ -42,8 +42,8 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      final result = await FirebaseAuth.instance.signInWithCredential(credential);
-      User user = result.user!;
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      User user = _firebaseAuth.currentUser!;
       final res = UserData(
         id: user.uid,
         email: user.email,

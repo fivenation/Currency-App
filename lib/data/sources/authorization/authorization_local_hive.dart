@@ -17,6 +17,9 @@ class AuthorizationLocalHiveImpl  implements AuthorizationLocal{
     await Hive.initFlutter();
     Hive.registerAdapter(AuthorizationAdapter());
     final authBox = await Hive.openBox<HiveUserDataObject>('authorization');
+    if (authBox.isEmpty) {
+      authBox.add(HiveUserDataObject(id: null, email: null, username: null));
+    }
     return AuthorizationLocalHiveImpl(authBox: authBox);
   }
 
@@ -24,7 +27,11 @@ class AuthorizationLocalHiveImpl  implements AuthorizationLocal{
   UserData? get() {
     try {
       final res = authBox.values.first;
-      return HiveUserDataMapper.fromHive(res);
+      if (res.email == null && res.username == null && res.id == null) {
+        return null;
+      } else {
+        return HiveUserDataMapper.fromHive(res);
+      }
     } catch(error) {
       logger.e(error);
       rethrow;

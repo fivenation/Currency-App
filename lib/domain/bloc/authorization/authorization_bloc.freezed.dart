@@ -23,6 +23,7 @@ mixin _$AuthorizationEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$AuthorizationEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ mixin _$AuthorizationEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) =>
@@ -53,6 +56,7 @@ mixin _$AuthorizationEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +66,7 @@ mixin _$AuthorizationEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +76,7 @@ mixin _$AuthorizationEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) =>
@@ -173,6 +179,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) {
     return loginEmail(email, password);
@@ -186,6 +193,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) {
     return loginEmail?.call(email, password);
@@ -199,6 +207,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -215,6 +224,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) {
     return loginEmail(this);
@@ -227,6 +237,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return loginEmail?.call(this);
@@ -239,6 +250,7 @@ class _$_LoginEmailEvent implements _LoginEmailEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -304,6 +316,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) {
     return loginGoogle();
@@ -317,6 +330,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) {
     return loginGoogle?.call();
@@ -330,6 +344,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -346,6 +361,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) {
     return loginGoogle(this);
@@ -358,6 +374,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return loginGoogle?.call(this);
@@ -370,6 +387,7 @@ class _$_LoginGoogleEvent implements _LoginGoogleEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -473,6 +491,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) {
     return registerEmail(email, password, username);
@@ -486,6 +505,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) {
     return registerEmail?.call(email, password, username);
@@ -499,6 +519,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -515,6 +536,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) {
     return registerEmail(this);
@@ -527,6 +549,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return registerEmail?.call(this);
@@ -539,6 +562,7 @@ class _$_RegisterEmailEvent implements _RegisterEmailEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -646,6 +670,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) {
     return authChanged(user);
@@ -659,6 +684,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) {
     return authChanged?.call(user);
@@ -672,6 +698,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -688,6 +715,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) {
     return authChanged(this);
@@ -700,6 +728,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return authChanged?.call(this);
@@ -712,6 +741,7 @@ class _$_AuthChangedEvent implements _AuthChangedEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -730,6 +760,135 @@ abstract class _AuthChangedEvent implements AuthorizationEvent {
   @JsonKey(ignore: true)
   _$$_AuthChangedEventCopyWith<_$_AuthChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CheckAuthEventCopyWith<$Res> {
+  factory _$$_CheckAuthEventCopyWith(
+          _$_CheckAuthEvent value, $Res Function(_$_CheckAuthEvent) then) =
+      __$$_CheckAuthEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CheckAuthEventCopyWithImpl<$Res>
+    extends _$AuthorizationEventCopyWithImpl<$Res, _$_CheckAuthEvent>
+    implements _$$_CheckAuthEventCopyWith<$Res> {
+  __$$_CheckAuthEventCopyWithImpl(
+      _$_CheckAuthEvent _value, $Res Function(_$_CheckAuthEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_CheckAuthEvent implements _CheckAuthEvent {
+  const _$_CheckAuthEvent();
+
+  @override
+  String toString() {
+    return 'AuthorizationEvent.checkAuth()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_CheckAuthEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginEmail,
+    required TResult Function() loginGoogle,
+    required TResult Function(String email, String password, String username)
+        registerEmail,
+    required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
+    required TResult Function() logOut,
+  }) {
+    return checkAuth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginEmail,
+    TResult? Function()? loginGoogle,
+    TResult? Function(String email, String password, String username)?
+        registerEmail,
+    TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
+    TResult? Function()? logOut,
+  }) {
+    return checkAuth?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginEmail,
+    TResult Function()? loginGoogle,
+    TResult Function(String email, String password, String username)?
+        registerEmail,
+    TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (checkAuth != null) {
+      return checkAuth();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginEmailEvent value) loginEmail,
+    required TResult Function(_LoginGoogleEvent value) loginGoogle,
+    required TResult Function(_RegisterEmailEvent value) registerEmail,
+    required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
+    required TResult Function(_LogOutEvent value) logOut,
+  }) {
+    return checkAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginEmailEvent value)? loginEmail,
+    TResult? Function(_LoginGoogleEvent value)? loginGoogle,
+    TResult? Function(_RegisterEmailEvent value)? registerEmail,
+    TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
+    TResult? Function(_LogOutEvent value)? logOut,
+  }) {
+    return checkAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginEmailEvent value)? loginEmail,
+    TResult Function(_LoginGoogleEvent value)? loginGoogle,
+    TResult Function(_RegisterEmailEvent value)? registerEmail,
+    TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
+    TResult Function(_LogOutEvent value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (checkAuth != null) {
+      return checkAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckAuthEvent implements AuthorizationEvent {
+  const factory _CheckAuthEvent() = _$_CheckAuthEvent;
 }
 
 /// @nodoc
@@ -775,6 +934,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     required TResult Function(String email, String password, String username)
         registerEmail,
     required TResult Function(UserData? user) authChanged,
+    required TResult Function() checkAuth,
     required TResult Function() logOut,
   }) {
     return logOut();
@@ -788,6 +948,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     TResult? Function(String email, String password, String username)?
         registerEmail,
     TResult? Function(UserData? user)? authChanged,
+    TResult? Function()? checkAuth,
     TResult? Function()? logOut,
   }) {
     return logOut?.call();
@@ -801,6 +962,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     TResult Function(String email, String password, String username)?
         registerEmail,
     TResult Function(UserData? user)? authChanged,
+    TResult Function()? checkAuth,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -817,6 +979,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     required TResult Function(_LoginGoogleEvent value) loginGoogle,
     required TResult Function(_RegisterEmailEvent value) registerEmail,
     required TResult Function(_AuthChangedEvent value) authChanged,
+    required TResult Function(_CheckAuthEvent value) checkAuth,
     required TResult Function(_LogOutEvent value) logOut,
   }) {
     return logOut(this);
@@ -829,6 +992,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     TResult? Function(_LoginGoogleEvent value)? loginGoogle,
     TResult? Function(_RegisterEmailEvent value)? registerEmail,
     TResult? Function(_AuthChangedEvent value)? authChanged,
+    TResult? Function(_CheckAuthEvent value)? checkAuth,
     TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return logOut?.call(this);
@@ -841,6 +1005,7 @@ class _$_LogOutEvent implements _LogOutEvent {
     TResult Function(_LoginGoogleEvent value)? loginGoogle,
     TResult Function(_RegisterEmailEvent value)? registerEmail,
     TResult Function(_AuthChangedEvent value)? authChanged,
+    TResult Function(_CheckAuthEvent value)? checkAuth,
     TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -859,45 +1024,45 @@ abstract class _LogOutEvent implements AuthorizationEvent {
 mixin _$AuthorizationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function(UserData userData) authorized,
     required TResult Function() unauthorized,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function(UserData userData)? authorized,
     TResult? Function()? unauthorized,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(UserData userData)? authorized,
     TResult Function()? unauthorized,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitialState value) initial,
     required TResult Function(_AuthorizedState value) authorized,
     required TResult Function(_NotAuthorizedState value) unauthorized,
+    required TResult Function(_AuthErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitialState value)? initial,
     TResult? Function(_AuthorizedState value)? authorized,
     TResult? Function(_NotAuthorizedState value)? unauthorized,
+    TResult? Function(_AuthErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitialState value)? initial,
     TResult Function(_AuthorizedState value)? authorized,
     TResult Function(_NotAuthorizedState value)? unauthorized,
+    TResult Function(_AuthErrorState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -919,114 +1084,6 @@ class _$AuthorizationStateCopyWithImpl<$Res, $Val extends AuthorizationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_AuthInitialStateCopyWith<$Res> {
-  factory _$$_AuthInitialStateCopyWith(
-          _$_AuthInitialState value, $Res Function(_$_AuthInitialState) then) =
-      __$$_AuthInitialStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_AuthInitialStateCopyWithImpl<$Res>
-    extends _$AuthorizationStateCopyWithImpl<$Res, _$_AuthInitialState>
-    implements _$$_AuthInitialStateCopyWith<$Res> {
-  __$$_AuthInitialStateCopyWithImpl(
-      _$_AuthInitialState _value, $Res Function(_$_AuthInitialState) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_AuthInitialState implements _AuthInitialState {
-  const _$_AuthInitialState();
-
-  @override
-  String toString() {
-    return 'AuthorizationState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthInitialState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserData userData) authorized,
-    required TResult Function() unauthorized,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserData userData)? authorized,
-    TResult? Function()? unauthorized,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unauthorized,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitialState value) initial,
-    required TResult Function(_AuthorizedState value) authorized,
-    required TResult Function(_NotAuthorizedState value) unauthorized,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitialState value)? initial,
-    TResult? Function(_AuthorizedState value)? authorized,
-    TResult? Function(_NotAuthorizedState value)? unauthorized,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitialState value)? initial,
-    TResult Function(_AuthorizedState value)? authorized,
-    TResult Function(_NotAuthorizedState value)? unauthorized,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthInitialState implements AuthorizationState {
-  const factory _AuthInitialState() = _$_AuthInitialState;
 }
 
 /// @nodoc
@@ -1104,9 +1161,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function(UserData userData) authorized,
     required TResult Function() unauthorized,
+    required TResult Function(String error) error,
   }) {
     return authorized(userData);
   }
@@ -1114,9 +1171,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function(UserData userData)? authorized,
     TResult? Function()? unauthorized,
+    TResult? Function(String error)? error,
   }) {
     return authorized?.call(userData);
   }
@@ -1124,9 +1181,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(UserData userData)? authorized,
     TResult Function()? unauthorized,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -1138,9 +1195,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitialState value) initial,
     required TResult Function(_AuthorizedState value) authorized,
     required TResult Function(_NotAuthorizedState value) unauthorized,
+    required TResult Function(_AuthErrorState value) error,
   }) {
     return authorized(this);
   }
@@ -1148,9 +1205,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitialState value)? initial,
     TResult? Function(_AuthorizedState value)? authorized,
     TResult? Function(_NotAuthorizedState value)? unauthorized,
+    TResult? Function(_AuthErrorState value)? error,
   }) {
     return authorized?.call(this);
   }
@@ -1158,9 +1215,9 @@ class _$_AuthorizedState implements _AuthorizedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitialState value)? initial,
     TResult Function(_AuthorizedState value)? authorized,
     TResult Function(_NotAuthorizedState value)? unauthorized,
+    TResult Function(_AuthErrorState value)? error,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -1218,9 +1275,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function(UserData userData) authorized,
     required TResult Function() unauthorized,
+    required TResult Function(String error) error,
   }) {
     return unauthorized();
   }
@@ -1228,9 +1285,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function(UserData userData)? authorized,
     TResult? Function()? unauthorized,
+    TResult? Function(String error)? error,
   }) {
     return unauthorized?.call();
   }
@@ -1238,9 +1295,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(UserData userData)? authorized,
     TResult Function()? unauthorized,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -1252,9 +1309,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitialState value) initial,
     required TResult Function(_AuthorizedState value) authorized,
     required TResult Function(_NotAuthorizedState value) unauthorized,
+    required TResult Function(_AuthErrorState value) error,
   }) {
     return unauthorized(this);
   }
@@ -1262,9 +1319,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitialState value)? initial,
     TResult? Function(_AuthorizedState value)? authorized,
     TResult? Function(_NotAuthorizedState value)? unauthorized,
+    TResult? Function(_AuthErrorState value)? error,
   }) {
     return unauthorized?.call(this);
   }
@@ -1272,9 +1329,9 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitialState value)? initial,
     TResult Function(_AuthorizedState value)? authorized,
     TResult Function(_NotAuthorizedState value)? unauthorized,
+    TResult Function(_AuthErrorState value)? error,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -1286,4 +1343,144 @@ class _$_NotAuthorizedState implements _NotAuthorizedState {
 
 abstract class _NotAuthorizedState implements AuthorizationState {
   const factory _NotAuthorizedState() = _$_NotAuthorizedState;
+}
+
+/// @nodoc
+abstract class _$$_AuthErrorStateCopyWith<$Res> {
+  factory _$$_AuthErrorStateCopyWith(
+          _$_AuthErrorState value, $Res Function(_$_AuthErrorState) then) =
+      __$$_AuthErrorStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$_AuthErrorStateCopyWithImpl<$Res>
+    extends _$AuthorizationStateCopyWithImpl<$Res, _$_AuthErrorState>
+    implements _$$_AuthErrorStateCopyWith<$Res> {
+  __$$_AuthErrorStateCopyWithImpl(
+      _$_AuthErrorState _value, $Res Function(_$_AuthErrorState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$_AuthErrorState(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AuthErrorState implements _AuthErrorState {
+  const _$_AuthErrorState({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'AuthorizationState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthErrorState &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AuthErrorStateCopyWith<_$_AuthErrorState> get copyWith =>
+      __$$_AuthErrorStateCopyWithImpl<_$_AuthErrorState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserData userData) authorized,
+    required TResult Function() unauthorized,
+    required TResult Function(String error) error,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unauthorized,
+    TResult? Function(String error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserData userData)? authorized,
+    TResult Function()? unauthorized,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthorizedState value) authorized,
+    required TResult Function(_NotAuthorizedState value) unauthorized,
+    required TResult Function(_AuthErrorState value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthorizedState value)? authorized,
+    TResult? Function(_NotAuthorizedState value)? unauthorized,
+    TResult? Function(_AuthErrorState value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthorizedState value)? authorized,
+    TResult Function(_NotAuthorizedState value)? unauthorized,
+    TResult Function(_AuthErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthErrorState implements AuthorizationState {
+  const factory _AuthErrorState({required final String error}) =
+      _$_AuthErrorState;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$_AuthErrorStateCopyWith<_$_AuthErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

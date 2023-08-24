@@ -1,3 +1,4 @@
+import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
@@ -9,6 +10,7 @@ import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:currency_app/utils/l10n/S.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +23,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final _bloc = getIt<AuthorizationBloc>();
 
   final _loginForm = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -35,9 +39,13 @@ class _LoginPageState extends State<LoginPage> {
 
   void onSubmit() {
     if (_loginForm.currentState!.validate()) {
-
+      _email = _emailController.text;
+      _password = _passwordController.text;
+      _bloc.add(AuthorizationEvent.loginEmail(email: _email, password: _password));
+    } else {
+      getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
     }
-    getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
+
   }
 
   void onRegisterButton() {
@@ -46,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onGoogleLogin() {
-
+    _bloc.add(const AuthorizationEvent.loginGoogle());
   }
 
   @override

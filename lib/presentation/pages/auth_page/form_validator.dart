@@ -42,7 +42,7 @@ class FormValidator {
     if (input1 == null) {
       return S.of(context).auth_invalid_password_duplicate_empty;
     }
-    if (input1!.isEmpty) {
+    if (input1.isEmpty) {
       return S.of(context).auth_invalid_password_duplicate_empty;
     }
     if (input1 != input2) {

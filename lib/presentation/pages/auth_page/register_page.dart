@@ -1,3 +1,4 @@
+import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
@@ -22,6 +23,8 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
+  final _bloc = getIt<AuthorizationBloc>();
+
   final _registerForm = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
@@ -31,7 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
   late String _email;
   late String _username;
   late String _password;
-  late String _duplicatePassword;
 
   /// In this widget, some of the theme elements do not match the theme,
   /// so they are specified in the widget constants
@@ -39,9 +41,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void onSubmit() {
     if (_registerForm.currentState!.validate()) {
-
+      _email = _emailController.text;
+      _username = _usernameController.text;
+      _password = _passwordController.text;
+      _bloc.add(AuthorizationEvent.registerEmail(email: _email, password: _password, username: _username));
+    } else {
+      getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
     }
-    getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
   }
 
   void onLoginButton() {

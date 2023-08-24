@@ -38,11 +38,18 @@
   "auth_invalid_password_duplicate_empty" : "Продублируйте пароль",
   "auth_invalid_password_duplicate_invalid" : "Пароли не совпадают",
 
+  "auth_error_authorized" : "Вы уже авторизованы",
+  "auth_error_auth_error" : "Ошибка авторизации. Попробуйте снова позже",
+  "auth_error_auth_google" : "Ошибка авторизации с Google. Попробуйте снова позже",
+  "auth_error_registration" : "Ошибка регистрации. Попробуйте снова позже",
+
   "preferences_title" : "Настройки",
   "preferences_logout" : "Выйти",
   "preferences_theme_switch" : "Тёмная тема",
   "preferences_language_switch" : "Язык",
   "preferences_language_ru" : "Русский",
   "preferences_language_en" : "English",
-  "preferences_base_currency" : "Базовая валюта"
+  "preferences_base_currency" : "Базовая валюта",
+
+  "error_unknown" : "Неизвестная ошибка!"
 }

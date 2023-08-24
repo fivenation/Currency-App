@@ -104,6 +104,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get auth_invalid_password_duplicate_invalid => 'Пароли не совпадают';
 
   @override
+  String get auth_error_authorized => 'Вы уже авторизованы';
+
+  @override
+  String get auth_error_auth_error => 'Ошибка авторизации. Попробуйте снова позже';
+
+  @override
+  String get auth_error_auth_google => 'Ошибка авторизации с Google. Попробуйте снова позже';
+
+  @override
+  String get auth_error_registration => 'Ошибка регистрации. Попробуйте снова позже';
+
+  @override
   String get preferences_title => 'Настройки';
 
   @override
@@ -123,4 +135,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get preferences_base_currency => 'Базовая валюта';
+
+  @override
+  String get error_unknown => 'Неизвестная ошибка!';
 }

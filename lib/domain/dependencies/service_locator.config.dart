@@ -12,7 +12,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../data/repository/authorization/authorization.dart' as _i17;
+import '../../data/repository/authorization/authorization_repository_firebase_impl.dart'
+    as _i17;
 import '../../data/repository/preferences/preferences_repository_impl.dart'
     as _i12;
 import '../../data/services/auth_service/authorization_firebase.dart' as _i7;

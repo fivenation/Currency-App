@@ -1,6 +1,10 @@
 import 'dart:async';
 
+import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/domain/repository/authorization_repository.dart';
+import 'package:currency_app/presentation/navigation/route_names.dart';
+import 'package:currency_app/presentation/navigation/router.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:currency_app/domain/models/user/user_data.dart';
@@ -23,6 +27,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
     on<_LoginGoogleEvent>(_onLoginGoogleEvent);
     on<_RegisterEmailEvent>(_onRegisterEmailEvent);
     on<_LogOutEvent>(_onLogoutEvent);
+    on<_CheckAuthEvent>(_onCheckAuthEvent);
     _sub = _repository.user.listen((curr) => add(AuthorizationEvent.authChanged(user: curr)));
   }
 
@@ -31,34 +36,40 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
     _sub?.cancel();
   }
 
+  void _onCheckAuthEvent(_CheckAuthEvent event, Emitter<AuthorizationState> emit) async {
+    if (state is _AuthorizedState) {
+      emit(state);
+    } else {
+      emit(const AuthorizationState.unauthorized());
+    }
+  }
+
   void _onLoginEmailEvent(_LoginEmailEvent event, Emitter<AuthorizationState> emit) async {
     final state = this.state;
     if (state is _AuthorizedState) {
-      throw "Authorized";
+      emit(const AuthorizationState.error(error: "Authorized"));
     }
-    emit(const AuthorizationState.initial());
     final user = await _repository.loginEmail(
         email: event.email, password: event.password);
     if (user != null) {
       emit(AuthorizationState.authorized(userData: user));
+      getIt<AppRouter>().router.goNamed(RouteNames.home);
     } else {
-      emit(const AuthorizationState.unauthorized());
-      throw "Authorization invalid";
+      emit(const AuthorizationState.error(error: "Authorization invalid"));
     }
   }
 
   void _onLoginGoogleEvent(_LoginGoogleEvent event, Emitter<AuthorizationState> emit) async {
     final state = this.state;
     if (state is _AuthorizedState) {
-      throw "Authorized";
+      emit(const AuthorizationState.error(error: "Authorized"));
     }
-    emit(const AuthorizationState.initial());
     final user = await _repository.loginGoogle();
     if (user != null) {
       emit(AuthorizationState.authorized(userData: user));
+      getIt<AppRouter>().router.goNamed(RouteNames.home);
     } else {
-      emit(const AuthorizationState.unauthorized());
-      throw "Google Authorization invalid";
+      emit(const AuthorizationState.error(error: "Google authorization invalid"));
     }
   }
 
@@ -66,16 +77,15 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       _RegisterEmailEvent event,
       Emitter<AuthorizationState> emit) async {
     if (state is _AuthorizedState) {
-      throw "Authorized";
+      emit(const AuthorizationState.error(error: "Authorized"));
     }
-    emit(const AuthorizationState.initial());
     final user = await _repository.registerEmail(
         email: event.email, password: event.password, username: event.username);
     if (user != null) {
       emit(AuthorizationState.authorized(userData: user));
+      getIt<AppRouter>().router.goNamed(RouteNames.home);
     } else {
-      emit(const AuthorizationState.unauthorized());
-      throw "Registration invalid";
+      emit(const AuthorizationState.error(error: "Registration invalid"));
     }
   }
 
@@ -96,6 +106,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       return;
     } else {
       emit(newState);
+      getIt<AppRouter>().router.goNamed(RouteNames.home);
     }
   }
 
