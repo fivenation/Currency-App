@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:currency_app/domain/repository/authorization_repository.dart';
-import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:currency_app/domain/models/user/user_data.dart';
@@ -14,10 +13,9 @@ part 'authorization_state.dart';
 @singleton
 class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
   final AuthorizationRepository _repository;
-  final Messenger _messenger;
   late final StreamSubscription? _sub;
 
-  AuthorizationBloc(this._repository, this._messenger)
+  AuthorizationBloc(this._repository,)
       : super( _repository.currentUser != null ? AuthorizationState.authorized(userData: _repository.currentUser!)
         : const AuthorizationState.unauthorized()) {
     on<_AuthChangedEvent>(_onAuthChanged);
@@ -36,9 +34,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
   void _onLoginEmailEvent(_LoginEmailEvent event, Emitter<AuthorizationState> emit) async {
     final state = this.state;
     if (state is _AuthorizedState) {
-      _messenger.showMessage(
-          message: "Ошибка! Пользователь уже авторизован!");
-      return;
+      throw "Authorized";
     }
     emit(const AuthorizationState.initial());
     final user = await _repository.loginEmail(
@@ -47,18 +43,14 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       emit(AuthorizationState.authorized(userData: user));
     } else {
       emit(const AuthorizationState.unauthorized());
-      _messenger.showMessage(
-          message: "Ошибка! Не удалось авторизоваться");
-      return;
+      throw "Authorization invalid";
     }
   }
 
   void _onLoginGoogleEvent(_LoginGoogleEvent event, Emitter<AuthorizationState> emit) async {
     final state = this.state;
     if (state is _AuthorizedState) {
-      _messenger.showMessage(
-          message: "Ошибка! Пользователь уже авторизован!");
-      return;
+      throw "Authorized";
     }
     emit(const AuthorizationState.initial());
     final user = await _repository.loginGoogle();
@@ -66,9 +58,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       emit(AuthorizationState.authorized(userData: user));
     } else {
       emit(const AuthorizationState.unauthorized());
-      _messenger.showMessage(
-          message: "Ошибка! Не удалось авторизоваться с помощью гугл");
-      return;
+      throw "Google Authorization invalid";
     }
   }
 
@@ -76,9 +66,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       _RegisterEmailEvent event,
       Emitter<AuthorizationState> emit) async {
     if (state is _AuthorizedState) {
-      _messenger.showMessage(
-          message: "Ошибка! Пользователь уже авторизован!");
-      return;
+      throw "Authorized";
     }
     emit(const AuthorizationState.initial());
     final user = await _repository.registerEmail(
@@ -87,9 +75,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       emit(AuthorizationState.authorized(userData: user));
     } else {
       emit(const AuthorizationState.unauthorized());
-      _messenger.showMessage(
-          message: "Ошибка! Не удалось зарегистрироваться");
-      return;
+      throw "Registration invalid";
     }
   }
 

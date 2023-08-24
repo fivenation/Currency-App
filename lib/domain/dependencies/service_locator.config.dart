@@ -12,21 +12,23 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../data/repository/authorization/authorization.dart' as _i5;
+import '../../data/repository/authorization/authorization.dart' as _i17;
 import '../../data/repository/preferences/preferences_repository_impl.dart'
     as _i12;
 import '../../data/services/auth_service/authorization_firebase.dart' as _i7;
 import '../../data/services/auth_service/authorization_service.dart' as _i6;
+import '../../data/sources/authorization/authorization_local.dart' as _i4;
+import '../../data/sources/authorization/authorization_local_hive.dart' as _i5;
 import '../../data/sources/preferences/preferences_local.dart' as _i9;
 import '../../data/sources/preferences/preferences_local_hive.dart' as _i10;
 import '../../data/sources/summary/local/summary_local.dart' as _i13;
 import '../../data/sources/summary/local/summary_local_hive.dart' as _i14;
 import '../../presentation/navigation/router.dart' as _i3;
 import '../../presentation/theme/theme_manager.dart' as _i15;
-import '../../utils/l10n/locale_manager.dart' as _i17;
+import '../../utils/l10n/locale_manager.dart' as _i18;
 import '../../utils/scaffold_messenger.dart' as _i8;
-import '../bloc/authorization/authorization_bloc.dart' as _i16;
-import '../repository/authorization_repository.dart' as _i4;
+import '../bloc/authorization/authorization_bloc.dart' as _i19;
+import '../repository/authorization_repository.dart' as _i16;
 import '../repository/preferences_repository.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -41,8 +43,8 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     gh.singleton<_i3.AppRouter>(_i3.AppRouter());
-    gh.factory<_i4.AuthorizationRepository>(
-        () => _i5.AuthorizationRepositoryFirebaseImpl());
+    gh.factoryAsync<_i4.AuthorizationLocal>(
+        () => _i5.AuthorizationLocalHiveImpl.create());
     gh.factory<_i6.AuthorizationService>(
         () => _i7.AuthorizationServiceFirebaseImpl());
     gh.lazySingleton<_i8.Messenger>(() => _i8.Messenger());
@@ -55,16 +57,19 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singletonAsync<_i15.ThemeManager>(() async =>
         _i15.ThemeManager(await getAsync<_i11.PreferencesRepository>())
           ..initThemeMode());
-    gh.singleton<_i16.AuthorizationBloc>(
-      _i16.AuthorizationBloc(
-        gh<_i4.AuthorizationRepository>(),
-        gh<_i8.Messenger>(),
-      ),
+    gh.factoryAsync<_i16.AuthorizationRepository>(
+        () async => _i17.AuthorizationRepositoryFirebaseImpl(
+              gh<_i6.AuthorizationService>(),
+              await getAsync<_i4.AuthorizationLocal>(),
+            ));
+    gh.singletonAsync<_i18.LocaleManager>(() async =>
+        _i18.LocaleManager(await getAsync<_i11.PreferencesRepository>())
+          ..initLocale());
+    gh.singletonAsync<_i19.AuthorizationBloc>(
+      () async => _i19.AuthorizationBloc(
+          await getAsync<_i16.AuthorizationRepository>()),
       dispose: (i) => i.dispose(),
     );
-    gh.singletonAsync<_i17.LocaleManager>(() async =>
-        _i17.LocaleManager(await getAsync<_i11.PreferencesRepository>())
-          ..initLocale());
     return this;
   }
 }

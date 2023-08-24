@@ -20,7 +20,7 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
     Hive.registerAdapter(PreferencesAdapter());
     final preferencesBox = await Hive.openBox<HivePreferencesObject>('preferences');
     if (preferencesBox.isEmpty) {
-      preferencesBox.add(HivePreferencesObject(username: null, isDarkMode: null, language: null, baseCurrency: null, favoritesCurrency: null));
+      preferencesBox.add(HivePreferencesObject(isDarkMode: null, language: null, baseCurrency: null, favoritesCurrency: null));
     }
     return PreferencesLocalHiveImpl(preferencesBox: preferencesBox);
   }

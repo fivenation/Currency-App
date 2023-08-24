@@ -8,7 +8,6 @@ part of 'preferences_data.dart';
 
 _$_PreferencesData _$$_PreferencesDataFromJson(Map<String, dynamic> json) =>
     _$_PreferencesData(
-      username: json['username'] as String?,
       isDarkMode: json['is_dark_mode'] as bool?,
       language: json['language'] as String?,
       baseCurrency: json['base_currency'] as String?,
@@ -19,7 +18,6 @@ _$_PreferencesData _$$_PreferencesDataFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_PreferencesDataToJson(_$_PreferencesData instance) =>
     <String, dynamic>{
-      'username': instance.username,
       'is_dark_mode': instance.isDarkMode,
       'language': instance.language,
       'base_currency': instance.baseCurrency,

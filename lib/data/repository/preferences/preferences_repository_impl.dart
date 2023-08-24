@@ -11,15 +11,6 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
 
   static const _defaultBaseCurrency = "RUB";
 
-  @override
-  Future<String?> get username async {
-    try {
-      final res = await _local.get();
-      return res.username;
-    } catch(error) {
-      rethrow;
-    }
-  }
 
   @override
   Future<String> get baseCurrency async {
@@ -100,17 +91,6 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
       final cur = await _local.get();
       final res = await _local.update(cur.copyWith(language: language));
       return res.language!;
-    } catch(error) {
-      rethrow;
-    }
-  }
-
-  @override
-  Future<String> setUsername(String username) async {
-    try {
-      final cur = await _local.get();
-      final res = await _local.update(cur.copyWith(username: username));
-      return res.username!;
     } catch(error) {
       rethrow;
     }

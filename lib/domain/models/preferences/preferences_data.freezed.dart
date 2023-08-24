@@ -20,8 +20,6 @@ PreferencesData _$PreferencesDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PreferencesData {
-  @JsonKey(name: 'username')
-  String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_dark_mode')
   bool? get isDarkMode => throw _privateConstructorUsedError;
   @JsonKey(name: 'language')
@@ -44,8 +42,7 @@ abstract class $PreferencesDataCopyWith<$Res> {
       _$PreferencesDataCopyWithImpl<$Res, PreferencesData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'is_dark_mode') bool? isDarkMode,
+      {@JsonKey(name: 'is_dark_mode') bool? isDarkMode,
       @JsonKey(name: 'language') String? language,
       @JsonKey(name: 'base_currency') String? baseCurrency,
       @JsonKey(name: 'favorites_currency') List<String>? favoritesCurrency});
@@ -64,17 +61,12 @@ class _$PreferencesDataCopyWithImpl<$Res, $Val extends PreferencesData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = freezed,
     Object? isDarkMode = freezed,
     Object? language = freezed,
     Object? baseCurrency = freezed,
     Object? favoritesCurrency = freezed,
   }) {
     return _then(_value.copyWith(
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
       isDarkMode: freezed == isDarkMode
           ? _value.isDarkMode
           : isDarkMode // ignore: cast_nullable_to_non_nullable
@@ -104,8 +96,7 @@ abstract class _$$_PreferencesDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'is_dark_mode') bool? isDarkMode,
+      {@JsonKey(name: 'is_dark_mode') bool? isDarkMode,
       @JsonKey(name: 'language') String? language,
       @JsonKey(name: 'base_currency') String? baseCurrency,
       @JsonKey(name: 'favorites_currency') List<String>? favoritesCurrency});
@@ -122,17 +113,12 @@ class __$$_PreferencesDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = freezed,
     Object? isDarkMode = freezed,
     Object? language = freezed,
     Object? baseCurrency = freezed,
     Object? favoritesCurrency = freezed,
   }) {
     return _then(_$_PreferencesData(
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
       isDarkMode: freezed == isDarkMode
           ? _value.isDarkMode
           : isDarkMode // ignore: cast_nullable_to_non_nullable
@@ -157,8 +143,7 @@ class __$$_PreferencesDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PreferencesData implements _PreferencesData {
   const _$_PreferencesData(
-      {@JsonKey(name: 'username') this.username,
-      @JsonKey(name: 'is_dark_mode') this.isDarkMode,
+      {@JsonKey(name: 'is_dark_mode') this.isDarkMode,
       @JsonKey(name: 'language') this.language,
       @JsonKey(name: 'base_currency') this.baseCurrency,
       @JsonKey(name: 'favorites_currency')
@@ -168,9 +153,6 @@ class _$_PreferencesData implements _PreferencesData {
   factory _$_PreferencesData.fromJson(Map<String, dynamic> json) =>
       _$$_PreferencesDataFromJson(json);
 
-  @override
-  @JsonKey(name: 'username')
-  final String? username;
   @override
   @JsonKey(name: 'is_dark_mode')
   final bool? isDarkMode;
@@ -194,7 +176,7 @@ class _$_PreferencesData implements _PreferencesData {
 
   @override
   String toString() {
-    return 'PreferencesData(username: $username, isDarkMode: $isDarkMode, language: $language, baseCurrency: $baseCurrency, favoritesCurrency: $favoritesCurrency)';
+    return 'PreferencesData(isDarkMode: $isDarkMode, language: $language, baseCurrency: $baseCurrency, favoritesCurrency: $favoritesCurrency)';
   }
 
   @override
@@ -202,8 +184,6 @@ class _$_PreferencesData implements _PreferencesData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PreferencesData &&
-            (identical(other.username, username) ||
-                other.username == username) &&
             (identical(other.isDarkMode, isDarkMode) ||
                 other.isDarkMode == isDarkMode) &&
             (identical(other.language, language) ||
@@ -216,7 +196,7 @@ class _$_PreferencesData implements _PreferencesData {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, username, isDarkMode, language,
+  int get hashCode => Object.hash(runtimeType, isDarkMode, language,
       baseCurrency, const DeepCollectionEquality().hash(_favoritesCurrency));
 
   @JsonKey(ignore: true)
@@ -235,8 +215,7 @@ class _$_PreferencesData implements _PreferencesData {
 
 abstract class _PreferencesData implements PreferencesData {
   const factory _PreferencesData(
-      {@JsonKey(name: 'username') final String? username,
-      @JsonKey(name: 'is_dark_mode') final bool? isDarkMode,
+      {@JsonKey(name: 'is_dark_mode') final bool? isDarkMode,
       @JsonKey(name: 'language') final String? language,
       @JsonKey(name: 'base_currency') final String? baseCurrency,
       @JsonKey(name: 'favorites_currency')
@@ -245,9 +224,6 @@ abstract class _PreferencesData implements PreferencesData {
   factory _PreferencesData.fromJson(Map<String, dynamic> json) =
       _$_PreferencesData.fromJson;
 
-  @override
-  @JsonKey(name: 'username')
-  String? get username;
   @override
   @JsonKey(name: 'is_dark_mode')
   bool? get isDarkMode;

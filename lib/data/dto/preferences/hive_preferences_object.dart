@@ -6,16 +6,14 @@ part 'hive_preferences_object.g.dart';
 class HivePreferencesObject extends HiveObject {
 
   HivePreferencesObject({
-    required this.username,
     required this.isDarkMode,
     required this.language,
     required this.baseCurrency,
     required this.favoritesCurrency,
   });
 
-  @HiveField(0) String? username;
-  @HiveField(1) bool? isDarkMode;
-  @HiveField(2) String? language;
-  @HiveField(3) String? baseCurrency;
-  @HiveField(4) List<String>? favoritesCurrency;
+  @HiveField(0) bool? isDarkMode;
+  @HiveField(1) String? language;
+  @HiveField(2) String? baseCurrency;
+  @HiveField(3) List<String>? favoritesCurrency;
 }
