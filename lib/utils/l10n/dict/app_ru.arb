@@ -28,11 +28,28 @@
   "auth_register_login_hint_text" : "Уже зарегистрированы?",
   "auth_register_login_hint_button" : "Войти",
 
+  "auth_invalid_form" : "Пожалуйста заполните форму корректно",
+  "auth_invalid_email_empty" : "Введите почту",
+  "auth_invalid_email_invalid" : "Почта введена некорректно",
+  "auth_invalid_username_empty" : "Введите имя пользователя",
+  "auth_invalid_username_invalid" : "Имя пользователя введено некорректно",
+  "auth_invalid_password_empty" : "Введите пароль",
+  "auth_invalid_password_invalid" : "Пароль должен содержать больше 8 символов",
+  "auth_invalid_password_duplicate_empty" : "Продублируйте пароль",
+  "auth_invalid_password_duplicate_invalid" : "Пароли не совпадают",
+
+  "auth_error_authorized" : "Вы уже авторизованы",
+  "auth_error_auth_error" : "Ошибка авторизации. Попробуйте снова позже",
+  "auth_error_auth_google" : "Ошибка авторизации с Google. Попробуйте снова позже",
+  "auth_error_registration" : "Ошибка регистрации. Попробуйте снова позже",
+
   "preferences_title" : "Настройки",
   "preferences_logout" : "Выйти",
   "preferences_theme_switch" : "Тёмная тема",
   "preferences_language_switch" : "Язык",
   "preferences_language_ru" : "Русский",
   "preferences_language_en" : "English",
-  "preferences_base_currency" : "Базовая валюта"
+  "preferences_base_currency" : "Базовая валюта",
+
+  "error_unknown" : "Неизвестная ошибка!"
 }

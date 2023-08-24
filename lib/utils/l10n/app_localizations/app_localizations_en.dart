@@ -77,6 +77,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get auth_register_login_hint_button => 'Log In';
 
   @override
+  String get auth_invalid_form => 'Please fill out the form correctly';
+
+  @override
+  String get auth_invalid_email_empty => 'Enter e-mail';
+
+  @override
+  String get auth_invalid_email_invalid => 'Enter valid e-mail';
+
+  @override
+  String get auth_invalid_username_empty => 'Enter username';
+
+  @override
+  String get auth_invalid_username_invalid => 'Enter valid username';
+
+  @override
+  String get auth_invalid_password_empty => 'Enter password';
+
+  @override
+  String get auth_invalid_password_invalid => 'Password length should be more then 8 characters';
+
+  @override
+  String get auth_invalid_password_duplicate_empty => 'Duplicate password';
+
+  @override
+  String get auth_invalid_password_duplicate_invalid => 'Password mismatch';
+
+  @override
+  String get auth_error_authorized => 'You are already logged in';
+
+  @override
+  String get auth_error_auth_error => 'Authorization error. Try again later';
+
+  @override
+  String get auth_error_auth_google => 'Google authorization error. Try again later';
+
+  @override
+  String get auth_error_registration => 'Registration error. Try again later';
+
+  @override
   String get preferences_title => 'Preferences';
 
   @override
@@ -96,4 +135,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get preferences_base_currency => 'Base currency';
+
+  @override
+  String get error_unknown => 'Unknown error!';
 }

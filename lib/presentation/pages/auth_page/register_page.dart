@@ -1,6 +1,8 @@
+import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
+import 'package:currency_app/presentation/pages/auth_page/form_validator.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_widget.dart';
@@ -8,6 +10,7 @@ import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:currency_app/utils/l10n/S.dart';
+import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,6 +23,9 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
+  final _bloc = getIt<AuthorizationBloc>();
+
+  final _registerForm = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -28,14 +34,20 @@ class _RegisterPageState extends State<RegisterPage> {
   late String _email;
   late String _username;
   late String _password;
-  late String _duplicatePassword;
 
   /// In this widget, some of the theme elements do not match the theme,
   /// so they are specified in the widget constants
   static const Color _textColor = Color(0xFF212121);
 
   void onSubmit() {
-
+    if (_registerForm.currentState!.validate()) {
+      _email = _emailController.text;
+      _username = _usernameController.text;
+      _password = _passwordController.text;
+      _bloc.add(AuthorizationEvent.registerEmail(email: _email, password: _password, username: _username));
+    } else {
+      getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
+    }
   }
 
   void onLoginButton() {
@@ -72,6 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 AuthFormWidget(
+                    formKey: _registerForm,
                     margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -91,6 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: false,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
+                          validator: (value) => FormValidator(context).email(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_username_hint,
@@ -99,6 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: false,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
+                          validator: (value) => FormValidator(context).username(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_password_hint,
@@ -107,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: true,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
+                          validator: (value) => FormValidator(context).password(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_duplicate_password_hint,
@@ -115,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: true,
                           textColor: _textColor,
                           margin: EdgeInsets.only(top: 12.h, bottom: 20.h),
+                          validator: (value) => FormValidator(context).passwordDuplicate(value, _passwordController.text),
                         ),
                         FilledButton(
                           onPressed: onSubmit,

@@ -237,6 +237,84 @@ abstract class AppLocalizations {
   /// **'Log In'**
   String get auth_register_login_hint_button;
 
+  /// No description provided for @auth_invalid_form.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill out the form correctly'**
+  String get auth_invalid_form;
+
+  /// No description provided for @auth_invalid_email_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter e-mail'**
+  String get auth_invalid_email_empty;
+
+  /// No description provided for @auth_invalid_email_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid e-mail'**
+  String get auth_invalid_email_invalid;
+
+  /// No description provided for @auth_invalid_username_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter username'**
+  String get auth_invalid_username_empty;
+
+  /// No description provided for @auth_invalid_username_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid username'**
+  String get auth_invalid_username_invalid;
+
+  /// No description provided for @auth_invalid_password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get auth_invalid_password_empty;
+
+  /// No description provided for @auth_invalid_password_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password length should be more then 8 characters'**
+  String get auth_invalid_password_invalid;
+
+  /// No description provided for @auth_invalid_password_duplicate_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Duplicate password'**
+  String get auth_invalid_password_duplicate_empty;
+
+  /// No description provided for @auth_invalid_password_duplicate_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password mismatch'**
+  String get auth_invalid_password_duplicate_invalid;
+
+  /// No description provided for @auth_error_authorized.
+  ///
+  /// In en, this message translates to:
+  /// **'You are already logged in'**
+  String get auth_error_authorized;
+
+  /// No description provided for @auth_error_auth_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorization error. Try again later'**
+  String get auth_error_auth_error;
+
+  /// No description provided for @auth_error_auth_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Google authorization error. Try again later'**
+  String get auth_error_auth_google;
+
+  /// No description provided for @auth_error_registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration error. Try again later'**
+  String get auth_error_registration;
+
   /// No description provided for @preferences_title.
   ///
   /// In en, this message translates to:
@@ -278,6 +356,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Base currency'**
   String get preferences_base_currency;
+
+  /// No description provided for @error_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error!'**
+  String get error_unknown;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

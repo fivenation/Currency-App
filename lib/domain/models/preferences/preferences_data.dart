@@ -7,7 +7,6 @@ part 'preferences_data.g.dart';
 @freezed
 class PreferencesData with _$PreferencesData {
   const factory PreferencesData({
-    @JsonKey(name: 'username') String? username,
     @JsonKey(name: 'is_dark_mode') bool? isDarkMode,
     @JsonKey(name: 'language') String? language,
     @JsonKey(name: 'base_currency') String? baseCurrency,

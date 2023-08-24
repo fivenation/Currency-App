@@ -1,6 +1,8 @@
+import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
+import 'package:currency_app/presentation/pages/auth_page/form_validator.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_widget.dart';
@@ -8,6 +10,8 @@ import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:currency_app/utils/l10n/S.dart';
+import 'package:currency_app/utils/logger.dart';
+import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,6 +24,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  final _bloc = getIt<AuthorizationBloc>();
+
+  final _loginForm = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -31,6 +38,13 @@ class _LoginPageState extends State<LoginPage> {
   static const Color _textColor = Color(0xFF212121);
 
   void onSubmit() {
+    if (_loginForm.currentState!.validate()) {
+      _email = _emailController.text;
+      _password = _passwordController.text;
+      _bloc.add(AuthorizationEvent.loginEmail(email: _email, password: _password));
+    } else {
+      getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
+    }
 
   }
 
@@ -40,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onGoogleLogin() {
-
+    _bloc.add(const AuthorizationEvent.loginGoogle());
   }
 
   @override
@@ -72,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 AuthFormWidget(
+                  formKey: _loginForm,
                   margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -91,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                         obscure: false,
                         textColor: _textColor,
                         margin: EdgeInsets.symmetric(vertical: 12.h),
+                        validator: (value) => FormValidator(context).email(value),
                       ),
                       AuthFormInput(
                         hint: S.of(context).auth_login_password_hint,
@@ -99,6 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                         obscure: true,
                         textColor: _textColor,
                         margin: EdgeInsets.only(top: 12.h, bottom: 20.h),
+                        validator: (value) => FormValidator(context).password(value),
                       ),
                       FilledButton(
                         onPressed: onSubmit,
@@ -138,9 +155,14 @@ class _LoginPageState extends State<LoginPage> {
                                 color: colorScheme.onPrimary,
                                 size: 42.r,
                               ),
-                              Text(
-                                S.of(context).auth_login_google_auth,
-                                style: textStyles.bodyLarge!.copyWith(color: colorScheme.onPrimary, height: 1, ),
+                              Expanded(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    S.of(context).auth_login_google_auth,
+                                    style: textStyles.bodyLarge!.copyWith(color: colorScheme.onPrimary, height: 1),
+                                  ),
+                                ),
                               ),
                               const SizedBox.shrink(),
                             ],
@@ -149,21 +171,24 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 16.h, bottom: 4.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "${S.of(context).auth_login_register_hint_text} ",
-                              style: textStyles.bodyMedium!.copyWith(color: _textColor),
-                            ),
-                            InkWell(
-                              onTap: onRegisterButton,
-                              child: Text(
-                                S.of(context).auth_login_register_hint_button,
-                                style: textStyles.bodyMedium!.copyWith(color: colorScheme.accent),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${S.of(context).auth_login_register_hint_text} ",
+                                style: textStyles.bodyMedium!.copyWith(color: _textColor),
                               ),
-                            )
-                          ],
+                              InkWell(
+                                onTap: onRegisterButton,
+                                child: Text(
+                                  S.of(context).auth_login_register_hint_button,
+                                  style: textStyles.bodyMedium!.copyWith(color: colorScheme.accent, fontSize: 16.sp),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],

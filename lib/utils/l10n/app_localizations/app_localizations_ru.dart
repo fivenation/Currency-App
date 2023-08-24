@@ -77,6 +77,45 @@ class AppLocalizationsRu extends AppLocalizations {
   String get auth_register_login_hint_button => 'Войти';
 
   @override
+  String get auth_invalid_form => 'Пожалуйста заполните форму корректно';
+
+  @override
+  String get auth_invalid_email_empty => 'Введите почту';
+
+  @override
+  String get auth_invalid_email_invalid => 'Почта введена некорректно';
+
+  @override
+  String get auth_invalid_username_empty => 'Введите имя пользователя';
+
+  @override
+  String get auth_invalid_username_invalid => 'Имя пользователя введено некорректно';
+
+  @override
+  String get auth_invalid_password_empty => 'Введите пароль';
+
+  @override
+  String get auth_invalid_password_invalid => 'Пароль должен содержать больше 8 символов';
+
+  @override
+  String get auth_invalid_password_duplicate_empty => 'Продублируйте пароль';
+
+  @override
+  String get auth_invalid_password_duplicate_invalid => 'Пароли не совпадают';
+
+  @override
+  String get auth_error_authorized => 'Вы уже авторизованы';
+
+  @override
+  String get auth_error_auth_error => 'Ошибка авторизации. Попробуйте снова позже';
+
+  @override
+  String get auth_error_auth_google => 'Ошибка авторизации с Google. Попробуйте снова позже';
+
+  @override
+  String get auth_error_registration => 'Ошибка регистрации. Попробуйте снова позже';
+
+  @override
   String get preferences_title => 'Настройки';
 
   @override
@@ -96,4 +135,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get preferences_base_currency => 'Базовая валюта';
+
+  @override
+  String get error_unknown => 'Неизвестная ошибка!';
 }

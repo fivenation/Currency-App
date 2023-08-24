@@ -15,3 +15,6 @@ class S {
 
   const S._();
 }
+
+/// To generate:
+/// flutter gen-l10n --arb-dir lib/utils/l10n/dict --template-arb-file app_en.arb --output-localization-file app_localizations.dart --output-dir lib/utils/l10n/app_localizations --no-synthetic-package

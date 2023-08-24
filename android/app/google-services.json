@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036603978306",
+    "project_id": "currency-app-flutter-a854a",
+    "storage_bucket": "currency-app-flutter-a854a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036603978306:android:9abb11927579f5460373db",
+        "android_client_info": {
+          "package_name": "com.fivenation.currency_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036603978306-lsi3qmtutt0u47ff327j3pl3417a4c68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoAyZrtnJG0ufB3ER6M2p-hWwFl72LhxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036603978306-l90vrt67lfoq6q1bf9mm60i0ngkvj0ko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

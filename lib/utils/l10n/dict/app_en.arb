@@ -28,11 +28,28 @@
   "auth_register_login_hint_text" : "Already have an account?",
   "auth_register_login_hint_button" : "Log In",
 
+  "auth_invalid_form" : "Please fill out the form correctly",
+  "auth_invalid_email_empty" : "Enter e-mail",
+  "auth_invalid_email_invalid" : "Enter valid e-mail",
+  "auth_invalid_username_empty" : "Enter username",
+  "auth_invalid_username_invalid" : "Enter valid username",
+  "auth_invalid_password_empty" : "Enter password",
+  "auth_invalid_password_invalid" : "Password length should be more then 8 characters",
+  "auth_invalid_password_duplicate_empty" : "Duplicate password",
+  "auth_invalid_password_duplicate_invalid" : "Password mismatch",
+
+  "auth_error_authorized" : "You are already logged in",
+  "auth_error_auth_error" : "Authorization error. Try again later",
+  "auth_error_auth_google" : "Google authorization error. Try again later",
+  "auth_error_registration" : "Registration error. Try again later",
+
   "preferences_title" : "Preferences",
   "preferences_logout" : "Log Out",
   "preferences_theme_switch" : "Dart mode",
   "preferences_language_switch" : "Language",
   "preferences_language_ru" : "Русский",
   "preferences_language_en" : "English",
-  "preferences_base_currency" : "Base currency"
+  "preferences_base_currency" : "Base currency",
+
+  "error_unknown" : "Unknown error!"
 }
