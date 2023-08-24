@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_registerForm.currentState!.validate()) {
 
     }
-    getIt<Messenger>().showMessage(message: "Please fill out the form correctly"); /// TODO S.of(context)
+    getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
   }
 
   void onLoginButton() {
@@ -98,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: false,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
-                          validator: (value) => FormValidator().email(value),
+                          validator: (value) => FormValidator(context).email(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_username_hint,
@@ -107,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: false,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
-                          validator: (value) => FormValidator().username(value),
+                          validator: (value) => FormValidator(context).username(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_password_hint,
@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: true,
                           textColor: _textColor,
                           margin: EdgeInsets.symmetric(vertical: 12.h),
-                          validator: (value) => FormValidator().password(value),
+                          validator: (value) => FormValidator(context).password(value),
                         ),
                         AuthFormInput(
                           hint: S.of(context).auth_register_duplicate_password_hint,
@@ -125,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscure: true,
                           textColor: _textColor,
                           margin: EdgeInsets.only(top: 12.h, bottom: 20.h),
-                          validator: (value) => FormValidator().passwordDuplicate(value, _passwordController.text),
+                          validator: (value) => FormValidator(context).passwordDuplicate(value, _passwordController.text),
                         ),
                         FilledButton(
                           onPressed: onSubmit,

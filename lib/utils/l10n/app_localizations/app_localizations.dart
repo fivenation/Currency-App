@@ -237,6 +237,60 @@ abstract class AppLocalizations {
   /// **'Log In'**
   String get auth_register_login_hint_button;
 
+  /// No description provided for @auth_invalid_form.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill out the form correctly'**
+  String get auth_invalid_form;
+
+  /// No description provided for @auth_invalid_email_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter e-mail'**
+  String get auth_invalid_email_empty;
+
+  /// No description provided for @auth_invalid_email_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid e-mail'**
+  String get auth_invalid_email_invalid;
+
+  /// No description provided for @auth_invalid_username_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter username'**
+  String get auth_invalid_username_empty;
+
+  /// No description provided for @auth_invalid_username_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid username'**
+  String get auth_invalid_username_invalid;
+
+  /// No description provided for @auth_invalid_password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get auth_invalid_password_empty;
+
+  /// No description provided for @auth_invalid_password_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password length should be more then 8 characters'**
+  String get auth_invalid_password_invalid;
+
+  /// No description provided for @auth_invalid_password_duplicate_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Duplicate password'**
+  String get auth_invalid_password_duplicate_empty;
+
+  /// No description provided for @auth_invalid_password_duplicate_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password mismatch'**
+  String get auth_invalid_password_duplicate_invalid;
+
   /// No description provided for @preferences_title.
   ///
   /// In en, this message translates to:

@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_loginForm.currentState!.validate()) {
 
     }
-    getIt<Messenger>().showMessage(message: "Please fill out the form correctly"); /// TODO S.of(context)
+    getIt<Messenger>().showMessage(message: S.of(context).auth_invalid_form);
   }
 
   void onRegisterButton() {
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         obscure: false,
                         textColor: _textColor,
                         margin: EdgeInsets.symmetric(vertical: 12.h),
-                        validator: (value) => FormValidator().email(value),
+                        validator: (value) => FormValidator(context).email(value),
                       ),
                       AuthFormInput(
                         hint: S.of(context).auth_login_password_hint,
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                         obscure: true,
                         textColor: _textColor,
                         margin: EdgeInsets.only(top: 12.h, bottom: 20.h),
-                        validator: (value) => FormValidator().password(value),
+                        validator: (value) => FormValidator(context).password(value),
                       ),
                       FilledButton(
                         onPressed: onSubmit,
