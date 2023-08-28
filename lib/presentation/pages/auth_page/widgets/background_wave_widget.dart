@@ -31,7 +31,7 @@ class BackgroundWaveWidget extends StatelessWidget {
             tween: Tween(begin: 0.0, end: 2 * pi),
             builder: (context, value, _) {
               return CustomPaint(
-                foregroundPainter: CurvePainter(value + offset, color, opacity),
+                foregroundPainter: WaveCurvePainter(value + offset, color, opacity),
               );
             },
           ),
@@ -41,12 +41,12 @@ class BackgroundWaveWidget extends StatelessWidget {
   }
 }
 
-class CurvePainter extends CustomPainter {
+class WaveCurvePainter extends CustomPainter {
   final double value;
   final Color color;
   final double opacity;
 
-  CurvePainter(this.value, this.color, this.opacity);
+  WaveCurvePainter(this.value, this.color, this.opacity);
 
   @override
   void paint(Canvas canvas, Size size) {

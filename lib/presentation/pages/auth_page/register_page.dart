@@ -3,8 +3,8 @@ import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/pages/auth_page/form_validator.dart';
-import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background.dart';
-import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input.dart';
+import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background_widget.dart';
+import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input_widget.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_widget.dart';
 import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
@@ -39,6 +39,12 @@ class _RegisterPageState extends State<RegisterPage> {
   /// so they are specified in the widget constants
   static const Color _textColor = Color(0xFF212121);
 
+  /// On the advice of other developers in Stateful Widgets, initializations
+  /// of references to contexts and blocks were removed from the build method
+  late final ThemeData theme;
+  late final AppColorScheme colorScheme;
+  late final AppTextStyles textStyles;
+
   void onSubmit() {
     if (_registerForm.currentState!.validate()) {
       _email = _emailController.text;
@@ -64,11 +70,15 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.extension<AppColorScheme>()!;
-    final textStyles = theme.extension<AppTextStyles>()!;
+  void initState() {
+    super.initState();
+    theme = Theme.of(context);
+    colorScheme = theme.extension<AppColorScheme>()!;
+    textStyles = theme.extension<AppTextStyles>()!;
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colorScheme.darkPrimary,
       body: Stack(
@@ -108,7 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               .copyWith(color: _textColor),
                         ),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint: S.of(context).auth_login_email_hint,
                         icon: AppIcons.mail_filled,
                         controller: _emailController,
@@ -118,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) =>
                             FormValidator(context).email(value),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint: S.of(context).auth_register_username_hint,
                         icon: AppIcons.persone_filled,
                         controller: _usernameController,
@@ -128,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) =>
                             FormValidator(context).username(value),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint: S.of(context).auth_register_password_hint,
                         icon: AppIcons.lock_outlined,
                         controller: _passwordController,
@@ -138,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) =>
                             FormValidator(context).password(value),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint:
                             S.of(context).auth_register_duplicate_password_hint,
                         icon: AppIcons.lock_outlined,

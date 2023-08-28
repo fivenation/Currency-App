@@ -3,7 +3,7 @@ import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthFormInput extends StatelessWidget {
+class AuthFormInputWidget extends StatelessWidget {
   final String hint;
   final IconData? icon;
   final TextEditingController controller;
@@ -12,7 +12,7 @@ class AuthFormInput extends StatelessWidget {
   final EdgeInsets? margin;
   final String? Function(String?) validator;
 
-  const AuthFormInput({
+  const AuthFormInputWidget({
     super.key,
     required this.hint,
     this.icon,

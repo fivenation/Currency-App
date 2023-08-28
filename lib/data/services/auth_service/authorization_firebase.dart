@@ -15,10 +15,15 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
   }
 
   @override
-  Future<UserData?> loginEmail({required String email, required String password}) async {
+  Future<UserData?> loginEmail({
+    required String email,
+    required String password,
+  }) async {
     try {
       UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password,);
+        email: email,
+        password: password,
+      );
       User user = result.user!;
       final res = UserData(
         id: user.uid,
@@ -36,7 +41,8 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
   Future<UserData?> loginGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
@@ -56,10 +62,17 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
   }
 
   @override
-  Future<UserData?> registerEmail({required String email, required String password, required String username}) async {
+  Future<UserData?> registerEmail({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
     try {
-      UserCredential result = await _firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: password,);
+      UserCredential result =
+          await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       User user = result.user!;
       await user.updateDisplayName(username);
       final res = UserData(
@@ -79,13 +92,12 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
     return _firebaseAuth.authStateChanges().map((User? user) {
       final res = user != null
           ? UserData(
-        id: user.uid,
-        email: user.email,
-        username: user.displayName,
-      )
+              id: user.uid,
+              email: user.email,
+              username: user.displayName,
+            )
           : null;
       return res;
     });
   }
-
 }

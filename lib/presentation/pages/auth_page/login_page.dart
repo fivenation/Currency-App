@@ -3,8 +3,8 @@ import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/pages/auth_page/form_validator.dart';
-import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background.dart';
-import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input.dart';
+import 'package:currency_app/presentation/pages/auth_page/widgets/auth_background_widget.dart';
+import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_input_widget.dart';
 import 'package:currency_app/presentation/pages/auth_page/widgets/auth_form_widget.dart';
 import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                               .copyWith(color: _textColor),
                         ),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint: S.of(context).auth_login_email_hint,
                         icon: AppIcons.mail_filled,
                         controller: _emailController,
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                         validator: (value) =>
                             FormValidator(context).email(value),
                       ),
-                      AuthFormInput(
+                      AuthFormInputWidget(
                         hint: S.of(context).auth_login_password_hint,
                         icon: AppIcons.lock_outlined,
                         controller: _passwordController,
