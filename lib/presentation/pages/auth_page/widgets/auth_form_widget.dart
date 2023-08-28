@@ -33,7 +33,7 @@ class AuthFormWidget extends StatelessWidget {
               color: Colors.black.withOpacity(0.15),
               blurRadius: 10.r,
             ),
-          ]
+          ],
       ),
       child: Form(
         key: formKey,

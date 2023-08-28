@@ -11,6 +11,6 @@ final getIt = GetIt.instance;
 configureDependencies(GetIt getIt, {String? environment, EnvironmentFilter? environmentFilter}) {
   return getIt.init(
       environmentFilter: environmentFilter,
-      environment: environment
+      environment: environment,
   );
 }

@@ -1,5 +1,4 @@
 import 'package:currency_app/domain/repository/preferences_repository.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 

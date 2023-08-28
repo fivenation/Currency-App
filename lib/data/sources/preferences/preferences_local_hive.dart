@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:currency_app/data/dto/preferences/hive_preferences_mapper.dart';
 import 'package:currency_app/data/dto/preferences/hive_preferences_object.dart';
 import 'package:currency_app/data/sources/preferences/preferences_local.dart';

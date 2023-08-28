@@ -1,9 +1,6 @@
 import 'package:currency_app/presentation/pages/auth_page/widgets/background_wave_widget.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
-import 'package:currency_app/utils/l10n/S.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthBackgroundWidget extends StatelessWidget {
   const AuthBackgroundWidget({super.key, required this.height});

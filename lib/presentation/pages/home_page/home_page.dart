@@ -38,8 +38,8 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(S.of(context).appTitle, style: TextStyle(color: colorScheme.primaryText),),
-              OutlinedButton(onPressed: () async => navigation.router.pushNamed(RouteNames.currency, pathParameters: {'name' : 'USD'}), child: Text('currency page'),),
-              OutlinedButton(onPressed: () => getIt<AuthorizationBloc>().add(const AuthorizationEvent.logOut()), child: Text('LOG OUT'),),
+              OutlinedButton(onPressed: () async => navigation.router.pushNamed(RouteNames.currency, pathParameters: {'name' : 'USD'}), child: const Text('currency page'),),
+              OutlinedButton(onPressed: () => getIt<AuthorizationBloc>().add(const AuthorizationEvent.logOut()), child: const Text('LOG OUT'),),
             ],
           ),
         ),

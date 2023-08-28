@@ -7,7 +7,7 @@ class HiveSummaryMapper {
       name: object.name,
       curValue: object.curValue,
       prevValue: object.prevValue,
-      isFavorite: object.isFavorite
+      isFavorite: object.isFavorite,
     );
   }
 
@@ -16,7 +16,7 @@ class HiveSummaryMapper {
         name: object.name,
         curValue: object.curValue,
         prevValue: object.prevValue,
-        isFavorite: object.isFavorite
+        isFavorite: object.isFavorite,
     );
   }
 

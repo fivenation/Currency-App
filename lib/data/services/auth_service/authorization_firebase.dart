@@ -1,7 +1,6 @@
 import 'package:currency_app/data/services/auth_service/authorization_service.dart';
 import 'package:currency_app/domain/models/user/user_data.dart';
 import 'package:currency_app/utils/logger.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +18,7 @@ class AuthorizationServiceFirebaseImpl implements AuthorizationService {
   Future<UserData?> loginEmail({required String email, required String password}) async {
     try {
       UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password,);
       User user = result.user!;
       final res = UserData(
         id: user.uid,

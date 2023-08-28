@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -16,7 +15,7 @@ class BackgroundWaveWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Container(
+      return SizedBox(
         height: height,
         width: constraints.biggest.width,
         child: LoopAnimationBuilder(
@@ -28,7 +27,7 @@ class BackgroundWaveWidget extends StatelessWidget {
             );},
         ),
       );
-    });
+    },);
 
   }
 
@@ -56,7 +55,7 @@ class CurvePainter extends CustomPainter {
 
     path.moveTo(size.width * 0, startPointY);
     path.quadraticBezierTo(
-        size.width * 0.5, controlPointY, size.width, endPointY);
+        size.width * 0.5, controlPointY, size.width, endPointY,);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

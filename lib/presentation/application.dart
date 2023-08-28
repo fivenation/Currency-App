@@ -50,7 +50,7 @@ class RunApplication extends StatelessWidget {
 
               routerConfig: appRouter.router,
             );
-          }
+          },
       ),
     );
 

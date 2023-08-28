@@ -4,7 +4,6 @@ import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/domain/repository/authorization_repository.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:currency_app/domain/models/user/user_data.dart';
@@ -21,7 +20,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
 
   AuthorizationBloc(this._repository,)
       : super( _repository.currentUser != null ? AuthorizationState.authorized(userData: _repository.currentUser!)
-        : const AuthorizationState.unauthorized()) {
+        : const AuthorizationState.unauthorized(),) {
     on<_AuthChangedEvent>(_onAuthChanged);
     on<_LoginEmailEvent>(_onLoginEmailEvent);
     on<_LoginGoogleEvent>(_onLoginGoogleEvent);
@@ -50,7 +49,7 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       emit(const AuthorizationState.error(error: "Authorized"));
     }
     final user = await _repository.loginEmail(
-        email: event.email, password: event.password);
+        email: event.email, password: event.password,);
     if (user != null) {
       emit(AuthorizationState.authorized(userData: user));
       getIt<AppRouter>().router.goNamed(RouteNames.home);
@@ -75,12 +74,12 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
 
   void _onRegisterEmailEvent(
       _RegisterEmailEvent event,
-      Emitter<AuthorizationState> emit) async {
+      Emitter<AuthorizationState> emit,) async {
     if (state is _AuthorizedState) {
       emit(const AuthorizationState.error(error: "Authorized"));
     }
     final user = await _repository.registerEmail(
-        email: event.email, password: event.password, username: event.username);
+        email: event.email, password: event.password, username: event.username,);
     if (user != null) {
       emit(AuthorizationState.authorized(userData: user));
       getIt<AppRouter>().router.goNamed(RouteNames.home);

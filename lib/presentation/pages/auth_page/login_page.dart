@@ -10,7 +10,6 @@ import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:currency_app/utils/l10n/S.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -192,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 )
               ],
             ),

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:currency_app/utils/l10n/app_localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 

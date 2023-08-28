@@ -11,9 +11,9 @@ class Messenger {
     _key.currentState?.showSnackBar(
         SnackBar(
           content: Text(
-              message
+              message,
           ),
-        )
+        ),
     );
   }
 }
