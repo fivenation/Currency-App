@@ -13,5 +13,6 @@ class PreferencesData with _$PreferencesData {
     @JsonKey(name: 'favorites_currency') List<String>? favoritesCurrency,
   }) = _PreferencesData;
 
-  factory PreferencesData.fromJson(Map<String, dynamic> json) => _$PreferencesDataFromJson(json);
+  factory PreferencesData.fromJson(Map<String, dynamic> json) =>
+      _$PreferencesDataFromJson(json);
 }

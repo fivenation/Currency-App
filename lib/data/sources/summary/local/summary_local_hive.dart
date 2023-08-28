@@ -22,9 +22,20 @@ class SummaryLocalHiveImpl implements SummaryLocal {
   @override
   Future<SummaryData> update(SummaryData data) async {
     try {
-      await summaryBox.putAt(summaryBox.values.toList().indexWhere((element) => element.name == data.name), HiveSummaryMapper.toHive(data));
-      return HiveSummaryMapper.fromHive(summaryBox.getAt(summaryBox.values.toList().indexWhere((element) => element.name == data.name))!);
-    } catch(error) {
+      await summaryBox.putAt(
+        summaryBox.values
+            .toList()
+            .indexWhere((element) => element.name == data.name),
+        HiveSummaryMapper.toHive(data),
+      );
+      return HiveSummaryMapper.fromHive(
+        summaryBox.getAt(
+          summaryBox.values
+              .toList()
+              .indexWhere((element) => element.name == data.name),
+        )!,
+      );
+    } catch (error) {
       rethrow;
     }
   }
@@ -34,7 +45,7 @@ class SummaryLocalHiveImpl implements SummaryLocal {
     try {
       final res = summaryBox.toMap().values.toList();
       return HiveSummaryMapper.fromHiveList(res);
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
@@ -46,6 +57,4 @@ class SummaryLocalHiveImpl implements SummaryLocal {
     final res = summaryBox.toMap().values.toList();
     return HiveSummaryMapper.fromHiveList(res);
   }
-
-
 }

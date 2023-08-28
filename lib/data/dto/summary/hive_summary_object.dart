@@ -8,11 +8,15 @@ class HiveSummaryObject extends HiveObject {
     required this.name,
     required this.curValue,
     required this.prevValue,
-    required this.isFavorite
+    required this.isFavorite,
   });
 
-  @HiveField(0) String name;
-  @HiveField(1) double curValue;
-  @HiveField(2) double prevValue;
-  @HiveField(3) bool isFavorite;
+  @HiveField(0)
+  String name;
+  @HiveField(1)
+  double curValue;
+  @HiveField(2)
+  double prevValue;
+  @HiveField(3)
+  bool isFavorite;
 }

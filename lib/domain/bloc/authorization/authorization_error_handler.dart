@@ -8,11 +8,16 @@ class AuthBlocErrorInterpreter {
 
   String handleError(String message) {
     switch (message) {
-      case AuthBlocError.authorized : return S.of(context).auth_error_authorized;
-      case AuthBlocError.authError : return S.of(context).auth_error_auth_error;
-      case AuthBlocError.registrationError : return S.of(context).auth_error_registration;
-      case AuthBlocError.googleAuthError : return S.of(context).auth_error_auth_google;
-      default: return S.of(context).error_unknown;
+      case AuthBlocError.authorized:
+        return S.of(context).auth_error_authorized;
+      case AuthBlocError.authError:
+        return S.of(context).auth_error_auth_error;
+      case AuthBlocError.registrationError:
+        return S.of(context).auth_error_registration;
+      case AuthBlocError.googleAuthError:
+        return S.of(context).auth_error_auth_google;
+      default:
+        return S.of(context).error_unknown;
     }
   }
 }

@@ -13,5 +13,6 @@ class SummaryData with _$SummaryData {
     @JsonKey(name: 'is_favorite') required bool isFavorite,
   }) = _SummaryData;
 
-  factory SummaryData.fromJson(Map<String, dynamic> json) => _$SummaryDataFromJson(json);
+  factory SummaryData.fromJson(Map<String, dynamic> json) =>
+      _$SummaryDataFromJson(json);
 }

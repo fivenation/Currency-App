@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:currency_app/utils/l10n/app_localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +9,11 @@ class S {
 
   static const supportedLocales = [en, ru];
 
-  static LocalizationsDelegate<AppLocalizations> get delegate => AppLocalizations.delegate;
+  static LocalizationsDelegate<AppLocalizations> get delegate =>
+      AppLocalizations.delegate;
 
-  static AppLocalizations of(BuildContext context) => AppLocalizations.of(context);
+  static AppLocalizations of(BuildContext context) =>
+      AppLocalizations.of(context);
 
   static bool isEn(Locale locale) => locale == en;
 

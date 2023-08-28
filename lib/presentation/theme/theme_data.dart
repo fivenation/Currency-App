@@ -9,31 +9,31 @@ class AppTheme {
   static const _fontFamily = 'PTSans';
 
   static const _lightColorScheme = AppColorScheme(
-    darkPrimary:  Color(0xFF303F9F),
+    darkPrimary: Color(0xFF303F9F),
     lightPrimary: Color(0xFFC5CAE9),
-    primary:      Color(0xFF3F51B9),
-    onPrimary:    Color(0xFFFFFFFF),
-    red:          Color(0xFFFF0000),
-    green:        Color(0xFF34A853),
-    background:   Color(0xFFFFFFFF),
-    divider:      Color(0xFFBDBDBD),
-    secondary:    Color(0xFF757575),
-    primaryText:  Color(0xFF212121),
-    accent:       Color(0xFFFF4081),
+    primary: Color(0xFF3F51B9),
+    onPrimary: Color(0xFFFFFFFF),
+    red: Color(0xFFFF0000),
+    green: Color(0xFF34A853),
+    background: Color(0xFFFFFFFF),
+    divider: Color(0xFFBDBDBD),
+    secondary: Color(0xFF757575),
+    primaryText: Color(0xFF212121),
+    accent: Color(0xFFFF4081),
   );
 
   static const _darkColorScheme = AppColorScheme(
-    darkPrimary:  Color(0xFF100D32),
+    darkPrimary: Color(0xFF100D32),
     lightPrimary: Color(0xFFC5CAE9),
-    primary:      Color(0xFF100D32),
-    onPrimary:    Color(0xFFF0F0F0),
-    red:          Color(0xFFFF1A1A),
-    green:        Color(0xFF3ABB5D),
-    background:   Color(0xFF242652),
-    divider:      Color(0xFFBDBDBD),
-    secondary:    Color(0xFFABABAB),
-    primaryText:  Color(0xFFF0F0F0),
-    accent:       Color(0xFFFF4B87),
+    primary: Color(0xFF100D32),
+    onPrimary: Color(0xFFF0F0F0),
+    red: Color(0xFFFF1A1A),
+    green: Color(0xFF3ABB5D),
+    background: Color(0xFF242652),
+    divider: Color(0xFFBDBDBD),
+    secondary: Color(0xFFABABAB),
+    primaryText: Color(0xFFF0F0F0),
+    accent: Color(0xFFFF4B87),
   );
 
   static final _commonTextStyles = AppTextStyles(
@@ -64,9 +64,10 @@ class AppTheme {
     ),
   );
 
-  static final FilledButtonThemeData _filledButtonThemeData = FilledButtonThemeData(
+  static final FilledButtonThemeData _filledButtonThemeData =
+      FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      padding: EdgeInsets.symmetric(horizontal: 16.w , vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
       alignment: Alignment.center,
       minimumSize: Size(64.w, 42.h),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36.r)),

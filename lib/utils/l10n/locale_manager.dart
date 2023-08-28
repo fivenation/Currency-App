@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 @singleton
 class LocaleManager with ChangeNotifier {
   final PreferencesRepository _preferences;
-  late var _locale;
+  late String _locale;
 
   LocaleManager(this._preferences);
 

@@ -10,19 +10,24 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
 void main() => runZonedGuarded(() async {
-  WidgetsFlutterBinding.ensureInitialized();
+      WidgetsFlutterBinding.ensureInitialized();
 
-  // Firebase initialization
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+      // Firebase initialization
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
-  // Dependency injection
-  getIt.init(environment: "dev");
-  await getIt.allReady();
+      // Dependency injection
+      getIt.init(environment: "dev");
+      await getIt.allReady();
 
-  runApp(const RunApplication());
-}, (error, stackTrace) {
-  logger.e("Error from runZoneGuarded. Error sent to Firebase Crashlytics", error: error);
-  FirebaseCrashlytics.instance.recordError(error, stackTrace);
-});
+      runApp(const RunApplication());
+    }, (error, stackTrace) {
+      logger.e(
+        "Error from runZoneGuarded. Error sent to Firebase Crashlytics",
+        error: error,
+      );
+      FirebaseCrashlytics.instance.recordError(error, stackTrace);
+    });

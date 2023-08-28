@@ -10,28 +10,26 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   final TextStyle? headerLarge;
   final TextStyle? headerMedium;
 
-  const AppTextStyles(
-      {
-        required this.titleLarge,
-        required this.bodyLarge,
-        required this.bodyMedium,
-        required this.bodySmall,
-        required this.appLogo,
-        required this.headerLarge,
-        required this.headerMedium,
-      });
+  const AppTextStyles({
+    required this.titleLarge,
+    required this.bodyLarge,
+    required this.bodyMedium,
+    required this.bodySmall,
+    required this.appLogo,
+    required this.headerLarge,
+    required this.headerMedium,
+  });
 
   @override
-  AppTextStyles copyWith(
-      {
-        TextStyle? titleLarge,
-        TextStyle? bodyLarge,
-        TextStyle? bodyMedium,
-        TextStyle? bodySmall,
-        TextStyle? appLogo,
-        TextStyle? headerLarge,
-        TextStyle? headerMedium,
-      }) {
+  AppTextStyles copyWith({
+    TextStyle? titleLarge,
+    TextStyle? bodyLarge,
+    TextStyle? bodyMedium,
+    TextStyle? bodySmall,
+    TextStyle? appLogo,
+    TextStyle? headerLarge,
+    TextStyle? headerMedium,
+  }) {
     return AppTextStyles(
       titleLarge: titleLarge ?? this.titleLarge,
       bodyLarge: bodyLarge ?? this.bodyLarge,

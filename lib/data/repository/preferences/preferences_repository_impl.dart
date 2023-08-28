@@ -1,6 +1,5 @@
 import 'package:currency_app/data/sources/preferences/preferences_local.dart';
 import 'package:currency_app/domain/repository/preferences_repository.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: PreferencesRepository)
@@ -11,13 +10,12 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
 
   static const _defaultBaseCurrency = "RUB";
 
-
   @override
   Future<String> get baseCurrency async {
     try {
       final res = await _local.get();
-      return res.baseCurrency??_defaultBaseCurrency;
-    } catch(error) {
+      return res.baseCurrency ?? _defaultBaseCurrency;
+    } catch (error) {
       rethrow;
     }
   }
@@ -26,8 +24,8 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
   Future<List<String>> get favorites async {
     try {
       final res = await _local.get();
-      return res.favoritesCurrency??[];
-    } catch(error) {
+      return res.favoritesCurrency ?? [];
+    } catch (error) {
       rethrow;
     }
   }
@@ -37,7 +35,7 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
     try {
       final res = await _local.get();
       return res.isDarkMode;
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
@@ -46,8 +44,8 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
   Future<String> get language async {
     try {
       final res = await _local.get();
-      return res.language??'eng';
-    } catch(error) {
+      return res.language ?? 'eng';
+    } catch (error) {
       rethrow;
     }
   }
@@ -58,7 +56,7 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
       final cur = await _local.get();
       final res = await _local.update(cur.copyWith(baseCurrency: baseCurrency));
       return res.baseCurrency!;
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
@@ -67,9 +65,10 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
   Future<List<String>> setFavorites(List<String> favorites) async {
     try {
       final cur = await _local.get();
-      final res = await _local.update(cur.copyWith(favoritesCurrency: favorites));
+      final res =
+          await _local.update(cur.copyWith(favoritesCurrency: favorites));
       return res.favoritesCurrency!;
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
@@ -80,7 +79,7 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
       final cur = await _local.get();
       final res = await _local.update(cur.copyWith(isDarkMode: isDarkMode));
       return res.isDarkMode!;
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
@@ -91,9 +90,8 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
       final cur = await _local.get();
       final res = await _local.update(cur.copyWith(language: language));
       return res.language!;
-    } catch(error) {
+    } catch (error) {
       rethrow;
     }
   }
-
 }

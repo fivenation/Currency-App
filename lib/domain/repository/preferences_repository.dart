@@ -1,7 +1,4 @@
-import 'package:currency_app/domain/models/preferences/preferences_data.dart';
-
 abstract class PreferencesRepository {
-
   Future<bool?> get isDarkMode;
   Future<bool> setIsDarkMode(bool isDarkMode);
 

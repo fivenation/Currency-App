@@ -8,9 +8,13 @@ final getIt = GetIt.instance;
 @InjectableInit(
   preferRelativeImports: true, // default
 )
-configureDependencies(GetIt getIt, {String? environment, EnvironmentFilter? environmentFilter}) {
+configureDependencies(
+  GetIt getIt, {
+  String? environment,
+  EnvironmentFilter? environmentFilter,
+}) {
   return getIt.init(
-      environmentFilter: environmentFilter,
-      environment: environment
+    environmentFilter: environmentFilter,
+    environment: environment,
   );
 }

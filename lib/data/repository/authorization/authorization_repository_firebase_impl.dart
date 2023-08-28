@@ -23,7 +23,10 @@ class AuthorizationRepositoryFirebaseImpl implements AuthorizationRepository {
   }
 
   @override
-  Future<UserData?> loginEmail({required String email, required String password}) async {
+  Future<UserData?> loginEmail({
+    required String email,
+    required String password,
+  }) async {
     final res = await _auth.loginEmail(email: email, password: password);
     await _local.update(res);
     return res;
@@ -37,8 +40,16 @@ class AuthorizationRepositoryFirebaseImpl implements AuthorizationRepository {
   }
 
   @override
-  Future<UserData?> registerEmail({required String email, required String password, required String username}) async {
-    final res = await _auth.registerEmail(email: email, password: password, username: username);
+  Future<UserData?> registerEmail({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
+    final res = await _auth.registerEmail(
+      email: email,
+      password: password,
+      username: username,
+    );
     await _local.update(res);
     return res;
   }
@@ -50,5 +61,4 @@ class AuthorizationRepositoryFirebaseImpl implements AuthorizationRepository {
       return event;
     });
   }
-
 }
