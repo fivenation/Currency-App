@@ -12,27 +12,42 @@ class AppRouter {
   GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [
-      GoRoute(name: RouteNames.home, path: '/', pageBuilder: (_, __) {
-        return const MaterialPage(
-          child: HomePage(),
-        );
-      },),
-      GoRoute(name: RouteNames.login, path: '/login', pageBuilder: (_, __) {
-        return const MaterialPage(
-          child: LoginPage(),
-        );
-      },),
-      GoRoute(name: RouteNames.register, path: '/register', pageBuilder: (_, __) {
-        return const MaterialPage(
-          child: RegisterPage(),
-        );
-      },),
-      GoRoute(name: RouteNames.currency, path: '/currency/:name', pageBuilder: (_, state) {
-        return MaterialPage(
-          child: CurrencyPage(name: state.pathParameters['name']!),
-        );
-      },),
+      GoRoute(
+        name: RouteNames.home,
+        path: '/',
+        pageBuilder: (_, __) {
+          return const MaterialPage(
+            child: HomePage(),
+          );
+        },
+      ),
+      GoRoute(
+        name: RouteNames.login,
+        path: '/login',
+        pageBuilder: (_, __) {
+          return const MaterialPage(
+            child: LoginPage(),
+          );
+        },
+      ),
+      GoRoute(
+        name: RouteNames.register,
+        path: '/register',
+        pageBuilder: (_, __) {
+          return const MaterialPage(
+            child: RegisterPage(),
+          );
+        },
+      ),
+      GoRoute(
+        name: RouteNames.currency,
+        path: '/currency/:name',
+        pageBuilder: (_, state) {
+          return MaterialPage(
+            child: CurrencyPage(name: state.pathParameters['name']!),
+          );
+        },
+      ),
     ],
   );
-
 }

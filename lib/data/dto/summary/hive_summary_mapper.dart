@@ -13,10 +13,10 @@ class HiveSummaryMapper {
 
   static HiveSummaryObject toHive(SummaryData object) {
     return HiveSummaryObject(
-        name: object.name,
-        curValue: object.curValue,
-        prevValue: object.prevValue,
-        isFavorite: object.isFavorite,
+      name: object.name,
+      curValue: object.curValue,
+      prevValue: object.prevValue,
+      isFavorite: object.isFavorite,
     );
   }
 

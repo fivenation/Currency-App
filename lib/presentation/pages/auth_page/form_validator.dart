@@ -12,7 +12,9 @@ class FormValidator {
     if (input == null) {
       return S.of(context).auth_invalid_email_empty;
     }
-    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(input)) {
+    if (!RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    ).hasMatch(input)) {
       return S.of(context).auth_invalid_email_invalid;
     }
     return null;
@@ -22,7 +24,8 @@ class FormValidator {
     if (input == null) {
       return S.of(context).auth_invalid_username_empty;
     }
-    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+").hasMatch(input)) {
+    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+")
+        .hasMatch(input)) {
       return S.of(context).auth_invalid_username_invalid;
     }
     return null;

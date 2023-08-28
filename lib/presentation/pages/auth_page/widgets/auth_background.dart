@@ -14,7 +14,8 @@ class AuthBackgroundWidget extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.extension<AppColorScheme>()!;
 
-    final double themeCoefficient = theme.brightness == Brightness.dark ? 0.75 : 1;
+    final double themeCoefficient =
+        theme.brightness == Brightness.dark ? 0.75 : 1;
 
     return SizedBox(
       height: height,
@@ -23,19 +24,36 @@ class AuthBackgroundWidget extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.bottomCenter,
-            child: BackgroundWaveWidget(height: height, speed: 0.20, offset: 45, color: backWaveColor, opacity: 1 * themeCoefficient,),
+            child: BackgroundWaveWidget(
+              height: height,
+              speed: 0.20,
+              offset: 45,
+              color: backWaveColor,
+              opacity: 1 * themeCoefficient,
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: BackgroundWaveWidget(height: height * 0.8, speed: 0.35, offset: 60, color: colorScheme.lightPrimary!, opacity: 0.75 * themeCoefficient,),
+            child: BackgroundWaveWidget(
+              height: height * 0.8,
+              speed: 0.35,
+              offset: 60,
+              color: colorScheme.lightPrimary!,
+              opacity: 0.75 * themeCoefficient,
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: BackgroundWaveWidget(height: height * 0.6, speed: 0.50, offset: 0, color: colorScheme.accent!, opacity: 0.75 * themeCoefficient,),
+            child: BackgroundWaveWidget(
+              height: height * 0.6,
+              speed: 0.50,
+              offset: 0,
+              color: colorScheme.accent!,
+              opacity: 0.75 * themeCoefficient,
+            ),
           ),
         ],
       ),
     );
   }
-
 }

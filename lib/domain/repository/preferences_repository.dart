@@ -1,5 +1,4 @@
 abstract class PreferencesRepository {
-
   Future<bool?> get isDarkMode;
   Future<bool> setIsDarkMode(bool isDarkMode);
 

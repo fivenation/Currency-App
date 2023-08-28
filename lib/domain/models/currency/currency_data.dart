@@ -14,5 +14,6 @@ class CurrencyData with _$CurrencyData {
     @JsonKey(name: 'history') required Map<int, double> history,
   }) = _CurrencyData;
 
-  factory CurrencyData.fromJson(Map<String, dynamic> json) => _$CurrencyDataFromJson(json);
+  factory CurrencyData.fromJson(Map<String, dynamic> json) =>
+      _$CurrencyDataFromJson(json);
 }

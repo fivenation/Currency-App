@@ -7,7 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: PreferencesLocal)
-class PreferencesLocalHiveImpl  implements PreferencesLocal{
+class PreferencesLocalHiveImpl implements PreferencesLocal {
   final Box<HivePreferencesObject> preferencesBox;
 
   PreferencesLocalHiveImpl({required this.preferencesBox});
@@ -16,9 +16,17 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
   static Future<PreferencesLocalHiveImpl> create() async {
     await Hive.initFlutter();
     Hive.registerAdapter(PreferencesAdapter());
-    final preferencesBox = await Hive.openBox<HivePreferencesObject>('preferences');
+    final preferencesBox =
+        await Hive.openBox<HivePreferencesObject>('preferences');
     if (preferencesBox.isEmpty) {
-      preferencesBox.add(HivePreferencesObject(isDarkMode: null, language: null, baseCurrency: null, favoritesCurrency: null));
+      preferencesBox.add(
+        HivePreferencesObject(
+          isDarkMode: null,
+          language: null,
+          baseCurrency: null,
+          favoritesCurrency: null,
+        ),
+      );
     }
     return PreferencesLocalHiveImpl(preferencesBox: preferencesBox);
   }
@@ -28,7 +36,7 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
     try {
       final res = preferencesBox.values.first;
       return HivePreferencesMapper.fromHive(res);
-    } catch(error) {
+    } catch (error) {
       logger.e(error);
       rethrow;
     }
@@ -39,10 +47,9 @@ class PreferencesLocalHiveImpl  implements PreferencesLocal{
     try {
       await preferencesBox.putAt(0, HivePreferencesMapper.toHive(data));
       return HivePreferencesMapper.fromHive(preferencesBox.values.first);
-    } catch(error) {
+    } catch (error) {
       logger.e(error);
       rethrow;
     }
   }
-
 }

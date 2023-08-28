@@ -9,9 +9,11 @@ class S {
 
   static const supportedLocales = [en, ru];
 
-  static LocalizationsDelegate<AppLocalizations> get delegate => AppLocalizations.delegate;
+  static LocalizationsDelegate<AppLocalizations> get delegate =>
+      AppLocalizations.delegate;
 
-  static AppLocalizations of(BuildContext context) => AppLocalizations.of(context);
+  static AppLocalizations of(BuildContext context) =>
+      AppLocalizations.of(context);
 
   static bool isEn(Locale locale) => locale == en;
 

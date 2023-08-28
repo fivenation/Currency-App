@@ -31,18 +31,28 @@ class _CurrencyPageState extends State<CurrencyPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(widget.name.toUpperCase(), style: TextStyle(color: colorScheme.primaryText),),
-            OutlinedButton(onPressed: () async {
-              await themeManager.changeMode(!isDarkMode);
-              setState(() {
-                isDarkMode = !isDarkMode;
-              });
-            }, child: Text(S.of(context).preferences_theme_switch),),
-            OutlinedButton(onPressed: () async {
-              final locale = localeManager.locale.languageCode == 'ru' ? 'en' : 'ru';
-              await localeManager.changeLocale(locale);
-              setState(() {});
-            }, child: Text(S.of(context).localeName),),
+            Text(
+              widget.name.toUpperCase(),
+              style: TextStyle(color: colorScheme.primaryText),
+            ),
+            OutlinedButton(
+              onPressed: () async {
+                await themeManager.changeMode(!isDarkMode);
+                setState(() {
+                  isDarkMode = !isDarkMode;
+                });
+              },
+              child: Text(S.of(context).preferences_theme_switch),
+            ),
+            OutlinedButton(
+              onPressed: () async {
+                final locale =
+                    localeManager.locale.languageCode == 'ru' ? 'en' : 'ru';
+                await localeManager.changeLocale(locale);
+                setState(() {});
+              },
+              child: Text(S.of(context).localeName),
+            ),
           ],
         ),
       ),

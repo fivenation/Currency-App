@@ -26,7 +26,9 @@ class HomePage extends StatelessWidget {
           unauthorized: () {
             navigation.router.goNamed(RouteNames.login);
           },
-          error: (error) => messenger.showMessage(message: AuthBlocErrorInterpreter(context).handleError(error)),
+          error: (error) => messenger.showMessage(
+            message: AuthBlocErrorInterpreter(context).handleError(error),
+          ),
           orElse: () {},
         );
       },
@@ -37,14 +39,26 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(S.of(context).appTitle, style: TextStyle(color: colorScheme.primaryText),),
-              OutlinedButton(onPressed: () async => navigation.router.pushNamed(RouteNames.currency, pathParameters: {'name' : 'USD'}), child: const Text('currency page'),),
-              OutlinedButton(onPressed: () => getIt<AuthorizationBloc>().add(const AuthorizationEvent.logOut()), child: const Text('LOG OUT'),),
+              Text(
+                S.of(context).appTitle,
+                style: TextStyle(color: colorScheme.primaryText),
+              ),
+              OutlinedButton(
+                onPressed: () async => navigation.router.pushNamed(
+                  RouteNames.currency,
+                  pathParameters: {'name': 'USD'},
+                ),
+                child: const Text('currency page'),
+              ),
+              OutlinedButton(
+                onPressed: () => getIt<AuthorizationBloc>()
+                    .add(const AuthorizationEvent.logOut()),
+                child: const Text('LOG OUT'),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-
 }

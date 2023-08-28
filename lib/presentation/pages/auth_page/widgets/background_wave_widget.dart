@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 class BackgroundWaveWidget extends StatelessWidget {
-  const BackgroundWaveWidget({super.key, required this.height, required this.speed, this.offset = 0.0, required this.color, required this.opacity});
+  const BackgroundWaveWidget({
+    super.key,
+    required this.height,
+    required this.speed,
+    this.offset = 0.0,
+    required this.color,
+    required this.opacity,
+  });
 
   final double height;
   final double speed;
@@ -14,23 +21,24 @@ class BackgroundWaveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        height: height,
-        width: constraints.biggest.width,
-        child: LoopAnimationBuilder(
-          duration: Duration(milliseconds: (5000 / speed).round()),
-          tween: Tween(begin: 0.0, end: 2 * pi),
-          builder: (context, value, _) {
-            return CustomPaint(
-              foregroundPainter: CurvePainter(value + offset, color, opacity),
-            );},
-        ),
-      );
-    },);
-
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          height: height,
+          width: constraints.biggest.width,
+          child: LoopAnimationBuilder(
+            duration: Duration(milliseconds: (5000 / speed).round()),
+            tween: Tween(begin: 0.0, end: 2 * pi),
+            builder: (context, value, _) {
+              return CustomPaint(
+                foregroundPainter: CurvePainter(value + offset, color, opacity),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
-
 }
 
 class CurvePainter extends CustomPainter {
@@ -55,7 +63,11 @@ class CurvePainter extends CustomPainter {
 
     path.moveTo(size.width * 0, startPointY);
     path.quadraticBezierTo(
-        size.width * 0.5, controlPointY, size.width, endPointY,);
+      size.width * 0.5,
+      controlPointY,
+      size.width,
+      endPointY,
+    );
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

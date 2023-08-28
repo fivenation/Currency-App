@@ -7,7 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthorizationLocal)
-class AuthorizationLocalHiveImpl  implements AuthorizationLocal{
+class AuthorizationLocalHiveImpl implements AuthorizationLocal {
   final Box<HiveUserDataObject> authBox;
 
   AuthorizationLocalHiveImpl({required this.authBox});
@@ -32,7 +32,7 @@ class AuthorizationLocalHiveImpl  implements AuthorizationLocal{
       } else {
         return HiveUserDataMapper.fromHive(res);
       }
-    } catch(error) {
+    } catch (error) {
       logger.e(error);
       rethrow;
     }
@@ -43,10 +43,9 @@ class AuthorizationLocalHiveImpl  implements AuthorizationLocal{
     try {
       await authBox.putAt(0, HiveUserDataMapper.toHive(data));
       return HiveUserDataMapper.fromHive(authBox.values.first);
-    } catch(error) {
+    } catch (error) {
       logger.e(error);
       rethrow;
     }
   }
-
 }

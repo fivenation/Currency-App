@@ -14,36 +14,34 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
   final Color? primaryText;
   final Color? accent;
 
-  const AppColorScheme(
-      {
-        required this.darkPrimary,
-        required this.lightPrimary,
-        required this.primary,
-        required this.onPrimary,
-        required this.red,
-        required this.green,
-        required this.background,
-        required this.divider,
-        required this.secondary,
-        required this.primaryText,
-        required this.accent,
-      });
+  const AppColorScheme({
+    required this.darkPrimary,
+    required this.lightPrimary,
+    required this.primary,
+    required this.onPrimary,
+    required this.red,
+    required this.green,
+    required this.background,
+    required this.divider,
+    required this.secondary,
+    required this.primaryText,
+    required this.accent,
+  });
 
   @override
-  AppColorScheme copyWith(
-      {
-        Color? darkPrimary,
-        Color? lightPrimary,
-        Color? primary,
-        Color? onPrimary,
-        Color? red,
-        Color? green,
-        Color? background,
-        Color? divider,
-        Color? secondary,
-        Color? primaryText,
-        Color? accent,
-      }) {
+  AppColorScheme copyWith({
+    Color? darkPrimary,
+    Color? lightPrimary,
+    Color? primary,
+    Color? onPrimary,
+    Color? red,
+    Color? green,
+    Color? background,
+    Color? divider,
+    Color? secondary,
+    Color? primaryText,
+    Color? accent,
+  }) {
     return AppColorScheme(
       darkPrimary: darkPrimary ?? this.darkPrimary,
       lightPrimary: lightPrimary ?? this.lightPrimary,
@@ -65,17 +63,17 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
       return this;
     }
     return AppColorScheme(
-        darkPrimary: Color.lerp(darkPrimary, other.darkPrimary, t),
-        lightPrimary: Color.lerp(lightPrimary, other.lightPrimary, t),
-        primary: Color.lerp(primary, other.primary, t),
-        red: Color.lerp(red, other.red, t),
-        green: Color.lerp(green, other.green, t),
-        onPrimary: Color.lerp(onPrimary, other.onPrimary, t),
-        background: Color.lerp(background, other.background, t),
-        divider: Color.lerp(divider, other.divider, t),
-        secondary: Color.lerp(secondary, other.secondary, t),
-        primaryText: Color.lerp(primaryText, other.primaryText, t),
-        accent: Color.lerp(accent, other.accent, t),
+      darkPrimary: Color.lerp(darkPrimary, other.darkPrimary, t),
+      lightPrimary: Color.lerp(lightPrimary, other.lightPrimary, t),
+      primary: Color.lerp(primary, other.primary, t),
+      red: Color.lerp(red, other.red, t),
+      green: Color.lerp(green, other.green, t),
+      onPrimary: Color.lerp(onPrimary, other.onPrimary, t),
+      background: Color.lerp(background, other.background, t),
+      divider: Color.lerp(divider, other.divider, t),
+      secondary: Color.lerp(secondary, other.secondary, t),
+      primaryText: Color.lerp(primaryText, other.primaryText, t),
+      accent: Color.lerp(accent, other.accent, t),
     );
   }
 }

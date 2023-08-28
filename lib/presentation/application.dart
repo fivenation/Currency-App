@@ -27,32 +27,33 @@ class RunApplication extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(value: getIt<ThemeManager>()),
         ChangeNotifierProvider.value(value: getIt<LocaleManager>()),
-        BlocProvider.value(value: getIt<AuthorizationBloc>()..add(const AuthorizationEvent.checkAuth())),
+        BlocProvider.value(
+          value: getIt<AuthorizationBloc>()
+            ..add(const AuthorizationEvent.checkAuth()),
+        ),
       ],
       child: ScreenUtilInit(
-          splitScreenMode: true,
-          designSize: const Size(390 , 844),
-          builder: (context, __) {
-            return MaterialApp.router(
+        splitScreenMode: true,
+        designSize: const Size(390, 844),
+        builder: (context, __) {
+          return MaterialApp.router(
+            // Theme
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: context.watch<ThemeManager>().themeMode,
 
-              // Theme
-              theme: AppTheme.lightTheme,
-              darkTheme: AppTheme.darkTheme,
-              themeMode: context.watch<ThemeManager>().themeMode,
+            // Scaffold Messenger
+            scaffoldMessengerKey: messenger.key,
 
-              // Scaffold Messenger
-              scaffoldMessengerKey: messenger.key,
+            // Localization
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: context.watch<LocaleManager>().locale,
 
-              // Localization
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-              locale: context.watch<LocaleManager>().locale,
-
-              routerConfig: appRouter.router,
-            );
-          },
+            routerConfig: appRouter.router,
+          );
+        },
       ),
     );
-
   }
 }

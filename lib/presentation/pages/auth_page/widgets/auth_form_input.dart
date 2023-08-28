@@ -12,7 +12,16 @@ class AuthFormInput extends StatelessWidget {
   final EdgeInsets? margin;
   final String? Function(String?) validator;
 
-  const AuthFormInput({super.key, required this.hint, this.icon, required this.controller, required this.obscure, required this.textColor, this.margin, required this.validator});
+  const AuthFormInput({
+    super.key,
+    required this.hint,
+    this.icon,
+    required this.controller,
+    required this.obscure,
+    required this.textColor,
+    this.margin,
+    required this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +40,22 @@ class AuthFormInput extends StatelessWidget {
         controller: controller,
         obscureText: obscure,
         textAlignVertical: TextAlignVertical.center,
-        style: textStyles.bodyLarge!.copyWith(color: textColor, height: 1,),
+        style: textStyles.bodyLarge!.copyWith(
+          color: textColor,
+          height: 1,
+        ),
         decoration: InputDecoration(
           isDense: true,
-          errorStyle: textStyles.bodySmall!.copyWith(color: colorScheme.red!, height: 1),
+          errorStyle: textStyles.bodySmall!
+              .copyWith(color: colorScheme.red!, height: 1),
           errorMaxLines: 2,
-          contentPadding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
           labelText: hint,
-          labelStyle: textStyles.bodyLarge!.copyWith(color: colorScheme.accent, height: 1),
-          hintStyle: textStyles.bodyLarge!.copyWith(color: colorScheme.secondary, height: 1),
+          labelStyle: textStyles.bodyLarge!
+              .copyWith(color: colorScheme.accent, height: 1),
+          hintStyle: textStyles.bodyLarge!
+              .copyWith(color: colorScheme.secondary, height: 1),
           hintText: hint,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
@@ -69,6 +85,4 @@ class AuthFormInput extends StatelessWidget {
       ),
     );
   }
-
-
 }
