@@ -1,3 +1,4 @@
+import 'package:currency_app/data/sources/summary/remote/summary_remote.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_error_handler.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
@@ -6,6 +7,7 @@ import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/utils/l10n/S.dart';
+import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,6 +61,12 @@ class HomePage extends StatelessWidget {
                 onPressed: () => getIt<AuthorizationBloc>()
                     .add(const AuthorizationEvent.logOut()),
                 child: const Text('LOG OUT'),
+              ),
+              OutlinedButton(
+                onPressed: () async {
+                  logger.d(await getIt<SummaryRemote>().getAll(getIt<BaseCurrencyNotifier>().value));
+                },
+                child: const Text('REQUEST!!!'),
               ),
             ],
           ),

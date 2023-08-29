@@ -1,5 +1,5 @@
 import 'package:currency_app/data/dto/summary/hive_summary_mapper.dart';
-import 'package:currency_app/data/dto/summary/hive_summary_object.dart';
+import 'package:currency_app/data/dto/summary/hive/hive_summary_object.dart';
 import 'package:currency_app/data/sources/summary/local/summary_local.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
 import 'package:hive_flutter/hive_flutter.dart';
