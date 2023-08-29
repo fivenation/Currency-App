@@ -26,9 +26,10 @@ import '../../data/sources/summary/local/summary_local.dart' as _i13;
 import '../../data/sources/summary/local/summary_local_hive.dart' as _i14;
 import '../../presentation/navigation/router.dart' as _i3;
 import '../../presentation/theme/theme_manager.dart' as _i15;
-import '../../utils/l10n/locale_manager.dart' as _i18;
+import '../../utils/l10n/locale_manager.dart' as _i19;
 import '../../utils/scaffold_messenger.dart' as _i8;
-import '../bloc/authorization/authorization_bloc.dart' as _i19;
+import '../bloc/authorization/authorization_bloc.dart' as _i20;
+import '../changeNotifiers/base_currency_notifier.dart' as _i18;
 import '../repository/authorization_repository.dart' as _i16;
 import '../repository/preferences_repository.dart' as _i11;
 
@@ -45,30 +46,33 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i3.AppRouter>(_i3.AppRouter());
     gh.factoryAsync<_i4.AuthorizationLocal>(
-        () => _i5.AuthorizationLocalHiveImpl.create(),);
+        () => _i5.AuthorizationLocalHiveImpl.create());
     gh.factory<_i6.AuthorizationService>(
-        () => _i7.AuthorizationServiceFirebaseImpl(),);
+        () => _i7.AuthorizationServiceFirebaseImpl());
     gh.lazySingleton<_i8.Messenger>(() => _i8.Messenger());
     gh.factoryAsync<_i9.PreferencesLocal>(
-        () => _i10.PreferencesLocalHiveImpl.create(),);
+        () => _i10.PreferencesLocalHiveImpl.create());
     gh.singletonAsync<_i11.PreferencesRepository>(() async =>
-        _i12.PreferencesRepositoryImpl(await getAsync<_i9.PreferencesLocal>()),);
+        _i12.PreferencesRepositoryImpl(await getAsync<_i9.PreferencesLocal>()));
     gh.factoryAsync<_i13.SummaryLocal>(
-        () => _i14.SummaryLocalHiveImpl.create(),);
+        () => _i14.SummaryLocalHiveImpl.create());
     gh.singletonAsync<_i15.ThemeManager>(() async =>
         _i15.ThemeManager(await getAsync<_i11.PreferencesRepository>())
-          ..initThemeMode(),);
+          ..initThemeMode());
     gh.factoryAsync<_i16.AuthorizationRepository>(
         () async => _i17.AuthorizationRepositoryFirebaseImpl(
               gh<_i6.AuthorizationService>(),
               await getAsync<_i4.AuthorizationLocal>(),
-            ),);
-    gh.singletonAsync<_i18.LocaleManager>(() async =>
-        _i18.LocaleManager(await getAsync<_i11.PreferencesRepository>())
-          ..initLocale(),);
-    gh.singletonAsync<_i19.AuthorizationBloc>(
-      () async => _i19.AuthorizationBloc(
-          await getAsync<_i16.AuthorizationRepository>(),),
+            ));
+    gh.singletonAsync<_i18.BaseCurrencyNotifier>(() async =>
+        _i18.BaseCurrencyNotifier(await getAsync<_i11.PreferencesRepository>())
+          ..init());
+    gh.singletonAsync<_i19.LocaleManager>(() async =>
+        _i19.LocaleManager(await getAsync<_i11.PreferencesRepository>())
+          ..initLocale());
+    gh.singletonAsync<_i20.AuthorizationBloc>(
+      () async => _i20.AuthorizationBloc(
+          await getAsync<_i16.AuthorizationRepository>()),
       dispose: (i) => i.dispose(),
     );
     return this;

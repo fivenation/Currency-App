@@ -1,5 +1,6 @@
 import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_error_handler.dart';
+import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
@@ -41,6 +42,10 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 S.of(context).appTitle,
+                style: TextStyle(color: colorScheme.primaryText),
+              ),
+              Text(
+                "Base currency: ${getIt<BaseCurrencyNotifier>().value}",
                 style: TextStyle(color: colorScheme.primaryText),
               ),
               OutlinedButton(
