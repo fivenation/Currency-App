@@ -1,10 +1,8 @@
-import 'package:currency_app/data/sources/summary/remote/summary_remote.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_error_handler.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
-import 'package:currency_app/domain/models/summary/summary_data.dart';
-import 'package:currency_app/domain/repository/summary_repository.dart';
+import 'package:currency_app/domain/repository/currency_repository.dart';
 import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
@@ -23,7 +21,7 @@ class HomePage extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.extension<AppColorScheme>()!;
     final messenger = getIt<Messenger>();
-    final repository = getIt<SummaryRepository>();
+    final repository = getIt<CurrencyRepository>();
 
     return BlocListener<AuthorizationBloc, AuthorizationState>(
       bloc: getIt<AuthorizationBloc>(),
@@ -67,16 +65,9 @@ class HomePage extends StatelessWidget {
               ),
               OutlinedButton(
                 onPressed: () async {
-                  logger.d(await repository.getAll(getIt<BaseCurrencyNotifier>().value));
+                  logger.d(await repository.get("USD", getIt<BaseCurrencyNotifier>().value));
                 },
                 child: const Text('REQUEST!!!'),
-              ),
-              OutlinedButton(
-                onPressed: () async {
-                  final cur = await repository.getAll(getIt<BaseCurrencyNotifier>().value);
-                  repository.changeFavorite(cur.last);
-                },
-                child: const Text('MAIGC'),
               ),
             ],
           ),

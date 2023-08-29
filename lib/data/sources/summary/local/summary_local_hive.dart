@@ -13,10 +13,14 @@ class SummaryLocalHiveImpl implements SummaryLocal {
 
   @factoryMethod
   static Future<SummaryLocalHiveImpl> create() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(SummaryAdapter());
-    final summaryBox = await Hive.openBox<HiveSummaryObject>('summary');
-    return SummaryLocalHiveImpl(summaryBox: summaryBox);
+    try {
+      await Hive.initFlutter();
+      Hive.registerAdapter(SummaryAdapter());
+      final summaryBox = await Hive.openBox<HiveSummaryObject>('summary');
+      return SummaryLocalHiveImpl(summaryBox: summaryBox);
+    } catch(error) {
+      rethrow;
+    }
   }
 
   @override
@@ -52,9 +56,13 @@ class SummaryLocalHiveImpl implements SummaryLocal {
 
   @override
   Future<List<SummaryData>> saveAll(List<SummaryData> list) async {
-    await summaryBox.clear();
-    await summaryBox.addAll(HiveSummaryMapper.toHiveList(list));
-    final res = summaryBox.toMap().values.toList();
-    return HiveSummaryMapper.fromHiveList(res);
+    try {
+      await summaryBox.clear();
+      await summaryBox.addAll(HiveSummaryMapper.toHiveList(list));
+      final res = summaryBox.toMap().values.toList();
+      return HiveSummaryMapper.fromHiveList(res);
+    } catch(error) {
+      rethrow;
+    }
   }
 }

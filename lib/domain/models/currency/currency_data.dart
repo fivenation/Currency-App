@@ -11,7 +11,7 @@ class CurrencyData with _$CurrencyData {
     @JsonKey(name: 'full_name') required String fullName,
     @JsonKey(name: 'cur_value') required double curValue,
     @JsonKey(name: 'prev_value') required double prevValue,
-    @JsonKey(name: 'history') required Map<int, double> history,
+    @JsonKey(name: 'history') required Map<String, double> history,
   }) = _CurrencyData;
 
   factory CurrencyData.fromJson(Map<String, dynamic> json) =>
