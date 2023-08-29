@@ -13,9 +13,10 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../data/repository/authorization/authorization_repository_firebase_impl.dart'
-    as _i20;
+    as _i22;
 import '../../data/repository/preferences/preferences_repository_impl.dart'
     as _i13;
+import '../../data/repository/summary/summary_repository_impl.dart' as _i19;
 import '../../data/services/auth_service/authorization_firebase.dart' as _i7;
 import '../../data/services/auth_service/authorization_service.dart' as _i6;
 import '../../data/services/dio/dio_service.dart' as _i8;
@@ -28,13 +29,14 @@ import '../../data/sources/summary/local/summary_local_hive.dart' as _i15;
 import '../../data/sources/summary/remote/summary_remote.dart' as _i16;
 import '../../data/sources/summary/remote/summary_remote_impl.dart' as _i17;
 import '../../presentation/navigation/router.dart' as _i3;
-import '../../presentation/theme/theme_manager.dart' as _i18;
-import '../../utils/l10n/locale_manager.dart' as _i22;
+import '../../presentation/theme/theme_manager.dart' as _i20;
+import '../../utils/l10n/locale_manager.dart' as _i24;
 import '../../utils/scaffold_messenger.dart' as _i9;
-import '../bloc/authorization/authorization_bloc.dart' as _i23;
-import '../changeNotifiers/base_currency_notifier.dart' as _i21;
-import '../repository/authorization_repository.dart' as _i19;
+import '../bloc/authorization/authorization_bloc.dart' as _i25;
+import '../changeNotifiers/base_currency_notifier.dart' as _i23;
+import '../repository/authorization_repository.dart' as _i21;
 import '../repository/preferences_repository.dart' as _i12;
+import '../repository/summary_repository.dart' as _i18;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -63,23 +65,28 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i15.SummaryLocalHiveImpl.create());
     gh.factory<_i16.SummaryRemote>(
         () => _i17.SummaryRemoteDioImpl(gh<_i8.DioService>()));
-    gh.singletonAsync<_i18.ThemeManager>(() async =>
-        _i18.ThemeManager(await getAsync<_i12.PreferencesRepository>())
+    gh.singletonAsync<_i18.SummaryRepository>(
+        () async => _i19.SummaryRepositoryImpl(
+              gh<_i16.SummaryRemote>(),
+              await getAsync<_i14.SummaryLocal>(),
+            ));
+    gh.singletonAsync<_i20.ThemeManager>(() async =>
+        _i20.ThemeManager(await getAsync<_i12.PreferencesRepository>())
           ..initThemeMode());
-    gh.factoryAsync<_i19.AuthorizationRepository>(
-        () async => _i20.AuthorizationRepositoryFirebaseImpl(
+    gh.factoryAsync<_i21.AuthorizationRepository>(
+        () async => _i22.AuthorizationRepositoryFirebaseImpl(
               gh<_i6.AuthorizationService>(),
               await getAsync<_i4.AuthorizationLocal>(),
             ));
-    gh.singletonAsync<_i21.BaseCurrencyNotifier>(() async =>
-        _i21.BaseCurrencyNotifier(await getAsync<_i12.PreferencesRepository>())
+    gh.singletonAsync<_i23.BaseCurrencyNotifier>(() async =>
+        _i23.BaseCurrencyNotifier(await getAsync<_i12.PreferencesRepository>())
           ..init());
-    gh.singletonAsync<_i22.LocaleManager>(() async =>
-        _i22.LocaleManager(await getAsync<_i12.PreferencesRepository>())
+    gh.singletonAsync<_i24.LocaleManager>(() async =>
+        _i24.LocaleManager(await getAsync<_i12.PreferencesRepository>())
           ..initLocale());
-    gh.singletonAsync<_i23.AuthorizationBloc>(
-      () async => _i23.AuthorizationBloc(
-          await getAsync<_i19.AuthorizationRepository>()),
+    gh.singletonAsync<_i25.AuthorizationBloc>(
+      () async => _i25.AuthorizationBloc(
+          await getAsync<_i21.AuthorizationRepository>()),
       dispose: (i) => i.dispose(),
     );
     return this;
