@@ -1,5 +1,5 @@
-import 'package:currency_app/domain/models/summary/summary_data.dart';
+import 'package:currency_app/data/dto/summary/remote/remote_summary_dto.dart';
 
 abstract class SummaryRemote {
-  Future<List<SummaryData>> getAll();
+  Future<List<RemoteSummaryDto>> getAll(String base);
 }

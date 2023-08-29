@@ -29,7 +29,7 @@ mixin _$CurrencyData {
   @JsonKey(name: 'prev_value')
   double get prevValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'history')
-  Map<int, double> get history => throw _privateConstructorUsedError;
+  Map<String, double> get history => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +48,7 @@ abstract class $CurrencyDataCopyWith<$Res> {
       @JsonKey(name: 'full_name') String fullName,
       @JsonKey(name: 'cur_value') double curValue,
       @JsonKey(name: 'prev_value') double prevValue,
-      @JsonKey(name: 'history') Map<int, double> history});
+      @JsonKey(name: 'history') Map<String, double> history});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$CurrencyDataCopyWithImpl<$Res, $Val extends CurrencyData>
       history: null == history
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
-              as Map<int, double>,
+              as Map<String, double>,
     ) as $Val);
   }
 }
@@ -108,7 +108,7 @@ abstract class _$$_CurrencyDataCopyWith<$Res>
       @JsonKey(name: 'full_name') String fullName,
       @JsonKey(name: 'cur_value') double curValue,
       @JsonKey(name: 'prev_value') double prevValue,
-      @JsonKey(name: 'history') Map<int, double> history});
+      @JsonKey(name: 'history') Map<String, double> history});
 }
 
 /// @nodoc
@@ -148,7 +148,7 @@ class __$$_CurrencyDataCopyWithImpl<$Res>
       history: null == history
           ? _value._history
           : history // ignore: cast_nullable_to_non_nullable
-              as Map<int, double>,
+              as Map<String, double>,
     ));
   }
 }
@@ -161,7 +161,7 @@ class _$_CurrencyData implements _CurrencyData {
       @JsonKey(name: 'full_name') required this.fullName,
       @JsonKey(name: 'cur_value') required this.curValue,
       @JsonKey(name: 'prev_value') required this.prevValue,
-      @JsonKey(name: 'history') required final Map<int, double> history})
+      @JsonKey(name: 'history') required final Map<String, double> history})
       : _history = history;
 
   factory _$_CurrencyData.fromJson(Map<String, dynamic> json) =>
@@ -179,10 +179,10 @@ class _$_CurrencyData implements _CurrencyData {
   @override
   @JsonKey(name: 'prev_value')
   final double prevValue;
-  final Map<int, double> _history;
+  final Map<String, double> _history;
   @override
   @JsonKey(name: 'history')
-  Map<int, double> get history {
+  Map<String, double> get history {
     if (_history is EqualUnmodifiableMapView) return _history;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_history);
@@ -229,12 +229,12 @@ class _$_CurrencyData implements _CurrencyData {
 
 abstract class _CurrencyData implements CurrencyData {
   const factory _CurrencyData(
-          {@JsonKey(name: 'name') required final String name,
-          @JsonKey(name: 'full_name') required final String fullName,
-          @JsonKey(name: 'cur_value') required final double curValue,
-          @JsonKey(name: 'prev_value') required final double prevValue,
-          @JsonKey(name: 'history') required final Map<int, double> history}) =
-      _$_CurrencyData;
+      {@JsonKey(name: 'name') required final String name,
+      @JsonKey(name: 'full_name') required final String fullName,
+      @JsonKey(name: 'cur_value') required final double curValue,
+      @JsonKey(name: 'prev_value') required final double prevValue,
+      @JsonKey(name: 'history')
+      required final Map<String, double> history}) = _$_CurrencyData;
 
   factory _CurrencyData.fromJson(Map<String, dynamic> json) =
       _$_CurrencyData.fromJson;
@@ -253,7 +253,7 @@ abstract class _CurrencyData implements CurrencyData {
   double get prevValue;
   @override
   @JsonKey(name: 'history')
-  Map<int, double> get history;
+  Map<String, double> get history;
   @override
   @JsonKey(ignore: true)
   _$$_CurrencyDataCopyWith<_$_CurrencyData> get copyWith =>

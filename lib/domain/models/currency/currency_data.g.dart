@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'currency_data.dart';
 
 // **************************************************************************
@@ -13,7 +15,7 @@ _$_CurrencyData _$$_CurrencyDataFromJson(Map<String, dynamic> json) =>
       curValue: (json['cur_value'] as num).toDouble(),
       prevValue: (json['prev_value'] as num).toDouble(),
       history: (json['history'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(int.parse(k), (e as num).toDouble()),
+        (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
     );
 
@@ -23,5 +25,5 @@ Map<String, dynamic> _$$_CurrencyDataToJson(_$_CurrencyData instance) =>
       'full_name': instance.fullName,
       'cur_value': instance.curValue,
       'prev_value': instance.prevValue,
-      'history': instance.history.map((k, e) => MapEntry(k.toString(), e)),
+      'history': instance.history,
     };

@@ -1,5 +1,5 @@
 import 'package:currency_app/data/dto/summary/hive_summary_mapper.dart';
-import 'package:currency_app/data/dto/summary/hive_summary_object.dart';
+import 'package:currency_app/data/dto/summary/hive/hive_summary_object.dart';
 import 'package:currency_app/data/sources/summary/local/summary_local.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -13,10 +13,14 @@ class SummaryLocalHiveImpl implements SummaryLocal {
 
   @factoryMethod
   static Future<SummaryLocalHiveImpl> create() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(SummaryAdapter());
-    final summaryBox = await Hive.openBox<HiveSummaryObject>('summary');
-    return SummaryLocalHiveImpl(summaryBox: summaryBox);
+    try {
+      await Hive.initFlutter();
+      Hive.registerAdapter(SummaryAdapter());
+      final summaryBox = await Hive.openBox<HiveSummaryObject>('summary');
+      return SummaryLocalHiveImpl(summaryBox: summaryBox);
+    } catch(error) {
+      rethrow;
+    }
   }
 
   @override
@@ -52,9 +56,13 @@ class SummaryLocalHiveImpl implements SummaryLocal {
 
   @override
   Future<List<SummaryData>> saveAll(List<SummaryData> list) async {
-    await summaryBox.clear();
-    await summaryBox.addAll(HiveSummaryMapper.toHiveList(list));
-    final res = summaryBox.toMap().values.toList();
-    return HiveSummaryMapper.fromHiveList(res);
+    try {
+      await summaryBox.clear();
+      await summaryBox.addAll(HiveSummaryMapper.toHiveList(list));
+      final res = summaryBox.toMap().values.toList();
+      return HiveSummaryMapper.fromHiveList(res);
+    } catch(error) {
+      rethrow;
+    }
   }
 }

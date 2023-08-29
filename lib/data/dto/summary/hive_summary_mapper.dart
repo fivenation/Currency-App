@@ -1,4 +1,4 @@
-import 'package:currency_app/data/dto/summary/hive_summary_object.dart';
+import 'package:currency_app/data/dto/summary/hive/hive_summary_object.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
 
 class HiveSummaryMapper {
