@@ -2,6 +2,9 @@ import 'package:currency_app/domain/repository/preferences_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+
+/// TODO ---> DISABLE CHANGE WHEN INTERNET CONNECTION LOST
+
 @singleton
 class BaseCurrencyNotifier with ChangeNotifier {
   final PreferencesRepository _preferences;
