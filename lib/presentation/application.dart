@@ -29,10 +29,7 @@ class RunApplication extends StatelessWidget {
         ChangeNotifierProvider.value(value: getIt<ThemeManager>()),
         ChangeNotifierProvider.value(value: getIt<LocaleManager>()),
         ChangeNotifierProvider.value(value: getIt<BaseCurrencyNotifier>()),
-        BlocProvider.value(
-          value: getIt<AuthorizationBloc>()
-            ..add(const AuthorizationEvent.checkAuth()),
-        ),
+        BlocProvider.value(value: getIt<AuthorizationBloc>()),
       ],
       child: ScreenUtilInit(
         splitScreenMode: true,

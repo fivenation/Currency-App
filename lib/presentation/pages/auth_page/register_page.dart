@@ -39,12 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
   /// so they are specified in the widget constants
   static const Color _textColor = Color(0xFF212121);
 
-  /// On the advice of other developers in Stateful Widgets, initializations
-  /// of references to contexts and blocks were removed from the build method
-  late final ThemeData theme;
-  late final AppColorScheme colorScheme;
-  late final AppTextStyles textStyles;
-
   void onSubmit() {
     if (_registerForm.currentState!.validate()) {
       _email = _emailController.text;
@@ -70,15 +64,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    theme = Theme.of(context);
-    colorScheme = theme.extension<AppColorScheme>()!;
-    textStyles = theme.extension<AppTextStyles>()!;
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.extension<AppColorScheme>()!;
+    final textStyles = theme.extension<AppTextStyles>()!;
+
     return Scaffold(
       backgroundColor: colorScheme.darkPrimary,
       body: Stack(
