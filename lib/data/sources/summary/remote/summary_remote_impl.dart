@@ -30,7 +30,7 @@ class SummaryRemoteDioImpl implements SummaryRemote {
         queryParameters: {
           "base": base,
           "date": DateFormat('yyyy-MM-dd')
-              .format(DateTime.now().subtract(const Duration(days: 1))),
+              .format(DateTime.now().subtract(const Duration(days: 2))),
         },
       );
       (res2.data["rates"] as Map).forEach((key, value) {

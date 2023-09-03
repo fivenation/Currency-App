@@ -3,6 +3,7 @@ import 'package:currency_app/presentation/pages/auth_page/login_page.dart';
 import 'package:currency_app/presentation/pages/auth_page/register_page.dart';
 import 'package:currency_app/presentation/pages/currency_page/currency_page.dart';
 import 'package:currency_app/presentation/pages/home_page/home_page.dart';
+import 'package:currency_app/presentation/pages/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -10,13 +11,22 @@ import 'package:injectable/injectable.dart';
 @singleton
 class AppRouter {
   GoRouter router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/l',
     routes: [
+      GoRoute(
+        name: RouteNames.landing,
+        path: '/l',
+        pageBuilder: (_, __) {
+          return const MaterialPage(
+            child: LandingPage(),
+          );
+        },
+      ),
       GoRoute(
         name: RouteNames.home,
         path: '/',
         pageBuilder: (_, __) {
-          return const MaterialPage(
+          return MaterialPage(
             child: HomePage(),
           );
         },
