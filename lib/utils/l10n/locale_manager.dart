@@ -1,5 +1,4 @@
 import 'package:currency_app/domain/repository/preferences_repository.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,7 +20,6 @@ class LocaleManager with ChangeNotifier {
   changeLocale(String locale) async {
     final updatedLocale = await _preferences.setLanguage(locale);
     _locale = updatedLocale;
-    logger.d(_locale);
     notifyListeners();
   }
 }

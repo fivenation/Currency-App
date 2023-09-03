@@ -63,7 +63,7 @@ class AppRouter {
         name: RouteNames.preferences,
         path: '/preferences',
         pageBuilder: (_, state) {
-          return MaterialPage(
+          return const MaterialPage(
             child: PreferencesPage(),
           );
         },

@@ -1,4 +1,3 @@
-import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
@@ -9,7 +8,6 @@ import 'package:currency_app/presentation/pages/home_page/widgets/home_header_wi
 import 'package:currency_app/presentation/pages/home_page/widgets/home_summary_list_widget.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/utils/l10n/S.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,12 +22,10 @@ class HomePage extends StatelessWidget {
     ..add(SummaryEvent.load(base: getIt<BaseCurrencyNotifier>().value));
 
   void changeFavorite(SummaryData item) {
-    logger.d("CHANGE FAVORITE ITEM ${item.name}");
     _bloc.add(SummaryEvent.changeFavorite(data: item));
   }
 
   void onItemTap(SummaryData item) {
-    logger.d("CLICKED ITEM ${item.name}");
   }
 
   void onSettingsTap() {
