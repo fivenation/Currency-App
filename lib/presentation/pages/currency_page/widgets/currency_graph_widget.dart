@@ -1,7 +1,5 @@
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
-import 'package:currency_app/utils/l10n/S.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -17,20 +15,20 @@ class CurrencyGraphWidget extends StatefulWidget {
 }
 
 class _CurrencyGraphWidgetState extends State<CurrencyGraphWidget> {
-  late TrackballBehavior _trackballBehavior;
   final List<CurrencyGraphData> data = [];
   late final double dateMin;
   late final double dateMax;
 
   @override
   void initState() {
-    _trackballBehavior = TrackballBehavior(
-      lineType: TrackballLineType.none,
-      activationMode: ActivationMode.singleTap,
-      tooltipSettings: const InteractiveTooltip(canShowMarker: false),
+    widget.data.forEach(
+      (key, value) => data.add(
+        CurrencyGraphData(
+          DateTime.parse(key),
+          ((1 / value) * 1000).roundToDouble() / 1000,
+        ),
+      ),
     );
-    widget.data.forEach((key, value) => data.add(CurrencyGraphData(
-        DateTime.parse(key), ((1 / value) * 1000).roundToDouble() / 1000)));
     dateMin = ((1 /
                     widget.data.values
                         .toList()
@@ -98,21 +96,32 @@ class _CurrencyGraphWidgetState extends State<CurrencyGraphWidget> {
                   offset: const Offset(0, 2),
                   blurRadius: 4,
                 ),
-              ]
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                    (trackballDetails.point!.yValue as double).toStringAsFixed(3),
-                  style: textStyles.bodyMedium!
-                      .copyWith(color: colorScheme.primaryText, fontWeight: FontWeight.bold),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    (trackballDetails.point!.yValue as double)
+                        .toStringAsFixed(3),
+                    style: textStyles.bodyMedium!.copyWith(
+                      color: colorScheme.primaryText,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Text(
-                  DateFormat('dd.MM.yy').format(DateTime.fromMillisecondsSinceEpoch(trackballDetails.point!.xValue as int)),
-                  style: textStyles.bodySmall!
-                      .copyWith(color: colorScheme.primaryText,),
+                  DateFormat('dd.MM.yy').format(
+                    DateTime.fromMillisecondsSinceEpoch(
+                      trackballDetails.point!.xValue as int,
+                    ),
+                  ),
+                  style: textStyles.bodySmall!.copyWith(
+                    color: colorScheme.primaryText,
+                  ),
                 ),
               ],
             ),
@@ -120,16 +129,17 @@ class _CurrencyGraphWidgetState extends State<CurrencyGraphWidget> {
         },
       ),
       onTrackballPositionChanging: (TrackballArgs args) {
-        args.chartPointInfo.label = '${args.chartPointInfo.xPosition!}\n${args.chartPointInfo.yPosition!}';
+        args.chartPointInfo.label =
+            '${args.chartPointInfo.xPosition!}\n${args.chartPointInfo.yPosition!}';
       },
       series: <LineSeries<CurrencyGraphData, DateTime>>[
         LineSeries<CurrencyGraphData, DateTime>(
-            dataSource: data,
-            xValueMapper: (CurrencyGraphData item, _) => item.date,
-            yValueMapper: (CurrencyGraphData item, _) => item.value,
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-            width: 2,
-            color: colorScheme.accent,
+          dataSource: data,
+          xValueMapper: (CurrencyGraphData item, _) => item.date,
+          yValueMapper: (CurrencyGraphData item, _) => item.value,
+          dataLabelSettings: const DataLabelSettings(isVisible: true),
+          width: 2,
+          color: colorScheme.accent,
         ),
       ],
     );
