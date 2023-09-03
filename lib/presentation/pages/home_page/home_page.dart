@@ -20,7 +20,8 @@ class HomePage extends StatelessWidget {
 
   final _navigation = getIt<AppRouter>();
   final _messenger = getIt<Messenger>();
-  final _bloc = getIt<SummaryBloc>()..add(SummaryEvent.load(base: getIt<BaseCurrencyNotifier>().value));
+  final _bloc = getIt<SummaryBloc>()
+    ..add(SummaryEvent.load(base: getIt<BaseCurrencyNotifier>().value));
 
   void changeFavorite(SummaryData item) {
     logger.d("CHANGE FAVORITE ITEM ${item.name}");
@@ -29,6 +30,10 @@ class HomePage extends StatelessWidget {
 
   void onItemTap(SummaryData item) {
     logger.d("CLICKED ITEM ${item.name}");
+  }
+
+  void onSettingsTap() {
+    _navigation.router.pushNamed(RouteNames.preferences);
   }
 
   @override
@@ -43,7 +48,8 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           successful: (data) {
-            final favorites = data.where((element) => element.isFavorite == true).toList();
+            final favorites =
+                data.where((element) => element.isFavorite == true).toList();
             return Scaffold(
               backgroundColor: colorScheme.primary,
               body: SafeArea(
@@ -54,28 +60,34 @@ class HomePage extends StatelessWidget {
                       SliverPersistentHeader(
                         pinned: true,
                         delegate: HomeHeaderWidget(
-                          expandedHeight: favorites.isEmpty?kToolbarHeight:kToolbarHeight+150.h,
+                          expandedHeight: favorites.isEmpty
+                              ? kToolbarHeight
+                              : kToolbarHeight + 150.h,
                           title: S.of(context).home_title,
                           favorites: favorites,
-                          onSettings: () => {},
+                          onSettings: () => onSettingsTap(),
                           onItemTap: (item) => onItemTap(item),
                         ),
                       ),
-                      SliverList(delegate: SliverChildListDelegate([
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              HomeSummaryListWidget(
-                                onItemTap: onItemTap,
-                                items: data,
-                                onFavoriteChange: changeFavorite,
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  HomeSummaryListWidget(
+                                    onItemTap: onItemTap,
+                                    items: data,
+                                    onFavoriteChange: changeFavorite,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],),),
+                      ),
                       SliverFillRemaining(
                         hasScrollBody: false,
                         child: Container(

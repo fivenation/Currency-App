@@ -76,11 +76,23 @@ class AppTheme {
     ),
   );
 
+  static final SwitchThemeData _switchThemeData = SwitchThemeData(
+    thumbIcon: MaterialStateProperty.resolveWith<Icon?>(
+          (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return const Icon(Icons.check);
+        }
+        return const Icon(Icons.close);
+      },
+    ),
+  );
+
   static ThemeData get lightTheme {
     return ThemeData(
       brightness: Brightness.light,
       fontFamily: _fontFamily,
       filledButtonTheme: _filledButtonThemeData,
+      switchTheme: _switchThemeData,
       extensions: <ThemeExtension<dynamic>>[
         _lightColorScheme,
         _commonTextStyles,
@@ -93,6 +105,7 @@ class AppTheme {
       brightness: Brightness.dark,
       fontFamily: _fontFamily,
       filledButtonTheme: _filledButtonThemeData,
+      switchTheme: _switchThemeData,
       extensions: <ThemeExtension<dynamic>>[
         _darkColorScheme,
         _commonTextStyles,

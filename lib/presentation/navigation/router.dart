@@ -4,6 +4,7 @@ import 'package:currency_app/presentation/pages/auth_page/register_page.dart';
 import 'package:currency_app/presentation/pages/currency_page/currency_page.dart';
 import 'package:currency_app/presentation/pages/home_page/home_page.dart';
 import 'package:currency_app/presentation/pages/landing_page.dart';
+import 'package:currency_app/presentation/pages/preferences_page/preferences_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -55,6 +56,15 @@ class AppRouter {
         pageBuilder: (_, state) {
           return MaterialPage(
             child: CurrencyPage(name: state.pathParameters['name']!),
+          );
+        },
+      ),
+      GoRoute(
+        name: RouteNames.preferences,
+        path: '/preferences',
+        pageBuilder: (_, state) {
+          return MaterialPage(
+            child: PreferencesPage(),
           );
         },
       ),
