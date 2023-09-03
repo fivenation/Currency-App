@@ -29,6 +29,13 @@
             {
               "client_id": "1036603978306-l90vrt67lfoq6q1bf9mm60i0ngkvj0ko.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1036603978306-4brg5mj525m3s46ccjerdrqiisktvftc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fivenation.currencyApp"
+              }
             }
           ]
         }
