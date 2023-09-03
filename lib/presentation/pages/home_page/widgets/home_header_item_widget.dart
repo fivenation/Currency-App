@@ -34,69 +34,72 @@ class HomeHeaderItemWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: textStyles.headerMedium!.copyWith(fontSize: 32.sp, color: colorScheme.primaryText),
-              ),
-              SizedBox(
-                width: 24,
-                child: Icon(
-                  (curr > prev)
-                      ? AppIcons.arrow_up_filled
-                      : AppIcons.arrow_down_filled,
-                  color: (curr > prev)
-                      ? colorScheme.green
-                      : colorScheme.red,
+      child: InkWell(
+        onTap: () => onTap(),
+        child:  Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: textStyles.headerMedium!.copyWith(fontSize: 32.sp, color: colorScheme.primaryText),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 8.h),
-            color: colorScheme.primaryText,
-            height: 1,
-            width: 90.w,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                S.of(context).currency_param_curr_abbr,
-                style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
-              ),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  (1/curr).toStringAsFixed(2),
+                SizedBox(
+                  width: 24,
+                  child: Icon(
+                    (curr > prev)
+                        ? AppIcons.arrow_up_filled
+                        : AppIcons.arrow_down_filled,
+                    color: (curr > prev)
+                        ? colorScheme.green
+                        : colorScheme.red,
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8.h),
+              color: colorScheme.primaryText,
+              height: 1,
+              width: 90.w,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  S.of(context).currency_param_curr_abbr,
                   style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                S.of(context).currency_param_prev_abbr,
-                style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
-              ),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  (1/prev).toStringAsFixed(2),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    (1/curr).toStringAsFixed(2),
+                    style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  S.of(context).currency_param_prev_abbr,
                   style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
                 ),
-              ),
-            ],
-          ),
-        ],
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    (1/prev).toStringAsFixed(2),
+                    style: textStyles.bodySmall!.copyWith(color: colorScheme.primaryText),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

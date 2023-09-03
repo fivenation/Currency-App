@@ -26,6 +26,10 @@ class HomePage extends StatelessWidget {
   }
 
   void onItemTap(SummaryData item) {
+    _navigation.router.pushNamed(
+      RouteNames.currency,
+      pathParameters: {"name": item.name},
+    );
   }
 
   void onSettingsTap() {
@@ -110,31 +114,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-/*
-Text(
-                                S.of(context).appTitle,
-                                style: TextStyle(color: colorScheme.primaryText),
-                              ),
-                              Text(
-                                "Base currency: ${getIt<BaseCurrencyNotifier>().value}",
-                                style: TextStyle(color: colorScheme.primaryText),
-                              ),
-                              OutlinedButton(
-                                onPressed: () async => _navigation.router.pushNamed(
-                                  RouteNames.currency,
-                                  pathParameters: {'name': 'USD'},
-                                ),
-                                child: const Text('currency page'),
-                              ),
-                              OutlinedButton(
-                                onPressed: () {
-                                  getIt<AuthorizationBloc>()
-                                      .add(const AuthorizationEvent.logOut());
-                                  _navigation.router.pushNamed(
-                                    RouteNames.landing,
-                                  );
-                                },
-                                child: const Text('LOG OUT'),
-                              ),
- */
