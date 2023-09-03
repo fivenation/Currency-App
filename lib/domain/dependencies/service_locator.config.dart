@@ -4,7 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_lambdas, require_trailing_commas
 // ignore_for_file: lines_longer_than_80_chars
 // coverage:ignore-file
 
@@ -93,7 +93,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singletonAsync<_i28.LocaleManager>(() async =>
         _i28.LocaleManager(await getAsync<_i12.PreferencesRepository>())
           ..initLocale());
-    gh.factoryAsync<_i29.SummaryBloc>(
+    gh.singletonAsync<_i29.SummaryBloc>(
         () async => _i29.SummaryBloc(await getAsync<_i18.SummaryRepository>()));
     gh.singletonAsync<_i30.AuthorizationBloc>(
       () async => _i30.AuthorizationBloc(
