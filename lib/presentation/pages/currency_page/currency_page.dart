@@ -178,10 +178,10 @@ class CurrencyPage extends StatelessWidget {
                             margin: EdgeInsets.only(left: 25.w),
                             width: 36,
                             child: Icon(
-                              (item.curValue > item.prevValue)
+                              (item.curValue < item.prevValue)
                                   ? AppIcons.arrow_up_filled
                                   : AppIcons.arrow_down_filled,
-                              color: (item.curValue > item.prevValue)
+                              color: (item.curValue < item.prevValue)
                                   ? colorScheme.green
                                   : colorScheme.red,
                               size: 36,

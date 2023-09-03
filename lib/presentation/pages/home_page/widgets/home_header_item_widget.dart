@@ -50,10 +50,10 @@ class HomeHeaderItemWidget extends StatelessWidget {
                 SizedBox(
                   width: 24,
                   child: Icon(
-                    (curr > prev)
+                    (curr < prev)
                         ? AppIcons.arrow_up_filled
                         : AppIcons.arrow_down_filled,
-                    color: (curr > prev)
+                    color: (curr < prev)
                         ? colorScheme.green
                         : colorScheme.red,
                   ),

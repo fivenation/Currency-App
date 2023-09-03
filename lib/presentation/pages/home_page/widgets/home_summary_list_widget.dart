@@ -158,10 +158,10 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
                               SizedBox(
                                 width: 24,
                                 child: Icon(
-                                  (items[index].curValue > items[index].prevValue)
+                                  (items[index].curValue < items[index].prevValue)
                                       ? AppIcons.arrow_up_filled
                                       : AppIcons.arrow_down_filled,
-                                  color: (items[index].curValue >
+                                  color: (items[index].curValue <
                                       items[index].prevValue)
                                       ? colorScheme.green
                                       : colorScheme.red,
