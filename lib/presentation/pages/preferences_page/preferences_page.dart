@@ -1,6 +1,7 @@
 import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
+import 'package:currency_app/presentation/navigation/route_names.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
@@ -29,7 +30,9 @@ class _PreferencesPageState extends State<PreferencesPage> {
   final _baseCurrency = getIt<BaseCurrencyNotifier>();
 
   void logOut() {
+    _navigation.router.goNamed(RouteNames.landing);
     _authBloc.add(const AuthorizationEvent.logOut());
+
   }
 
   bool isDarkMode = getIt<ThemeManager>().themeMode == ThemeMode.dark;
@@ -88,181 +91,196 @@ class _PreferencesPageState extends State<PreferencesPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // AUTHORIZATION
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 32.r,
-                        height: 32.r,
-                        child: Icon(
-                          AppIcons.person_outlined,
-                          color: colorScheme.primaryText,
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 8.w),
-                        child: Text(
-                          _authBloc.state.maybeMap(
-                            authorized: (e) => e.userData.username!,
-                            orElse: () => "Unknown user",
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 32.r,
+                          height: 32.r,
+                          child: Icon(
+                            AppIcons.person_outlined,
+                            color: colorScheme.primaryText,
                           ),
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
                         ),
-                      ),
-                    ],
-                  ),
-                  FilledButton(
-                    onPressed: logOut,
-                    style: theme.filledButtonTheme.style!.copyWith(
-                      backgroundColor:
-                          MaterialStateProperty.all(colorScheme.accent),
-                    ),
-                    child: SizedBox(
-                      width: 100.w,
-                      height: 40.h,
-                      child: Center(
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
+                        Container(
+                          padding: EdgeInsets.only(left: 8.w),
                           child: Text(
-                            S.of(context).preferences_logout,
-                            style: textStyles.bodyLarge!.copyWith(
-                              color: colorScheme.onPrimary,
-                              height: 1,
+                            _authBloc.state.maybeMap(
+                              authorized: (e) => e.userData.username!,
+                              orElse: () => "Unknown user",
+                            ),
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                      ],
+                    ),
+                    FilledButton(
+                      onPressed: logOut,
+                      style: theme.filledButtonTheme.style!.copyWith(
+                        backgroundColor:
+                        MaterialStateProperty.all(colorScheme.accent),
+                      ),
+                      child: SizedBox(
+                        width: 100.w,
+                        height: 40.h,
+                        child: Center(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              S.of(context).preferences_logout,
+                              style: textStyles.bodyLarge!.copyWith(
+                                color: colorScheme.onPrimary,
+                                height: 1,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+
               // THEME MODE
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Text(
-                      S.of(context).preferences_theme_switch,
-                      style: textStyles.bodyLarge!
-                          .copyWith(color: colorScheme.primaryText),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 8.w),
+                      child: Text(
+                        S.of(context).preferences_theme_switch,
+                        style: textStyles.bodyLarge!
+                            .copyWith(color: colorScheme.primaryText),
+                      ),
                     ),
-                  ),
-                  Switch(
-                    value: isDarkMode,
-                    onChanged: (value) {
-                      changeThemeMode();
-                    },
-                    activeColor: colorScheme.accent,
-                  ),
-                ],
+                    Switch(
+                      value: isDarkMode,
+                      onChanged: (value) {
+                        changeThemeMode();
+                      },
+                      activeColor: colorScheme.accent,
+                    ),
+                  ],
+                ),
               ),
+
               // LANGUAGE
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Text(
-                      S.of(context).preferences_language_switch,
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 8.w),
+                      child: Text(
+                        S.of(context).preferences_language_switch,
+                        style: textStyles.bodyLarge!
+                            .copyWith(color: colorScheme.primaryText),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: selectedLanguage,
+                      dropdownColor: colorScheme.background,
+                      items: [
+                        DropdownMenuItem(
+                          value: "ru",
+                          child: Text(
+                            S.of(context).preferences_language_ru,
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: "eng",
+                          child: Text(
+                            S.of(context).preferences_language_en,
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                      ],
+                      icon: null,
+                      underline: null,
                       style: textStyles.bodyLarge!
                           .copyWith(color: colorScheme.primaryText),
+                      onChanged: (newValue) => changeLanguage(newValue),
                     ),
-                  ),
-                  DropdownButton(
-                    value: selectedLanguage,
-                    dropdownColor: colorScheme.background,
-                    items: [
-                      DropdownMenuItem(
-                        value: "ru",
-                        child: Text(
-                          S.of(context).preferences_language_ru,
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "eng",
-                        child: Text(
-                          S.of(context).preferences_language_en,
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                    ],
-                    icon: null,
-                    underline: null,
-                    style: textStyles.bodyLarge!
-                        .copyWith(color: colorScheme.primaryText),
-                    onChanged: (newValue) => changeLanguage(newValue),
-                  ),
-                ],
+                  ],
+                ),
               ),
+
               // BASE CURRENCY
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Text(
-                      S.of(context).preferences_base_currency,
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 8.w),
+                      child: Text(
+                        S.of(context).preferences_base_currency,
+                        style: textStyles.bodyLarge!
+                            .copyWith(color: colorScheme.primaryText),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: selectedBaseCurrency,
+                      dropdownColor: colorScheme.background,
+                      items: [
+                        DropdownMenuItem(
+                          value: "RUB",
+                          child: Text(
+                            "RUB",
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: "EUR",
+                          child: Text(
+                            "EUR",
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: "USD",
+                          child: Text(
+                            "USD",
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: "KZT",
+                          child: Text(
+                            "KZT",
+                            style: textStyles.bodyLarge!
+                                .copyWith(color: colorScheme.primaryText),
+                          ),
+                        ),
+                      ],
+                      icon: null,
+                      underline: null,
                       style: textStyles.bodyLarge!
                           .copyWith(color: colorScheme.primaryText),
+                      onChanged: (newValue) => changeBaseCurrency(newValue),
                     ),
-                  ),
-                  DropdownButton(
-                    value: selectedBaseCurrency,
-                    dropdownColor: colorScheme.background,
-                    items: [
-                      DropdownMenuItem(
-                        value: "RUB",
-                        child: Text(
-                          "RUB",
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "EUR",
-                        child: Text(
-                          "EUR",
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "USD",
-                        child: Text(
-                          "USD",
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "KZT",
-                        child: Text(
-                          "KZT",
-                          style: textStyles.bodyLarge!
-                              .copyWith(color: colorScheme.primaryText),
-                        ),
-                      ),
-                    ],
-                    icon: null,
-                    underline: null,
-                    style: textStyles.bodyLarge!
-                        .copyWith(color: colorScheme.primaryText),
-                    onChanged: (newValue) => changeBaseCurrency(newValue),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
