@@ -2,6 +2,7 @@ import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart'
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/presentation/navigation/router.dart';
 import 'package:currency_app/presentation/pages/currency_page/bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/pages/currency_page/widgets/currency_graph_widget.dart';
 import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
@@ -189,6 +190,14 @@ class CurrencyPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
+                      height: 400.h,
+                      width: MediaQuery.of(context).size.width,
+                      child: CurrencyGraphWidget(
+                        data: item.history,
+                      ),
+                    )
                   ],
                 ),
               ),

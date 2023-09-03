@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// NEED TO FIX SOME HARDCODE !!!
 
-
 class PreferencesPage extends StatefulWidget {
   const PreferencesPage({super.key});
 
@@ -29,15 +29,14 @@ class _PreferencesPageState extends State<PreferencesPage> {
   final _localeManager = getIt<LocaleManager>();
   final _baseCurrency = getIt<BaseCurrencyNotifier>();
 
-  void logOut() {
-    _navigation.router.goNamed(RouteNames.landing);
-    _authBloc.add(const AuthorizationEvent.logOut());
-
-  }
-
   bool isDarkMode = getIt<ThemeManager>().themeMode == ThemeMode.dark;
   String selectedLanguage = getIt<LocaleManager>().locale.languageCode;
   String selectedBaseCurrency = getIt<BaseCurrencyNotifier>().value;
+
+  void logOut() {
+    _navigation.router.goNamed(RouteNames.landing);
+    _authBloc.add(const AuthorizationEvent.logOut());
+  }
 
   void changeThemeMode() async {
     _themeManager.changeMode(!isDarkMode);
@@ -54,10 +53,14 @@ class _PreferencesPageState extends State<PreferencesPage> {
   }
 
   void changeBaseCurrency(String? newValue) async {
-    _baseCurrency.change(newValue!);
-    setState(() {
-      selectedBaseCurrency = newValue;
-    });
+    final connectivity = await Connectivity().checkConnectivity();
+    if (connectivity == ConnectivityResult.mobile ||
+        connectivity == ConnectivityResult.wifi) {
+      _baseCurrency.change(newValue!);
+      setState(() {
+        selectedBaseCurrency = newValue;
+      });
+    }
   }
 
   @override
@@ -126,7 +129,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       onPressed: logOut,
                       style: theme.filledButtonTheme.style!.copyWith(
                         backgroundColor:
-                        MaterialStateProperty.all(colorScheme.accent),
+                            MaterialStateProperty.all(colorScheme.accent),
                       ),
                       child: SizedBox(
                         width: 100.w,

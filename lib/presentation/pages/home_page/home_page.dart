@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
@@ -25,11 +26,15 @@ class HomePage extends StatelessWidget {
     _bloc.add(SummaryEvent.changeFavorite(data: item));
   }
 
-  void onItemTap(SummaryData item) {
-    _navigation.router.pushNamed(
-      RouteNames.currency,
-      pathParameters: {"name": item.name},
-    );
+  void onItemTap(SummaryData item) async {
+    final connectivity = await Connectivity().checkConnectivity();
+    if (connectivity == ConnectivityResult.mobile ||
+        connectivity == ConnectivityResult.wifi) {
+      _navigation.router.pushNamed(
+        RouteNames.currency,
+        pathParameters: {"name": item.name},
+      );
+    }
   }
 
   void onSettingsTap() {
