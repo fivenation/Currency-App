@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:currency_app/domain/models/summary/summary_data.dart';
 import 'package:currency_app/presentation/theme/app_icons_icons.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/presentation/theme/text_styles.dart';
 import 'package:currency_app/utils/l10n/S.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,7 +41,6 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
   }
 
   void onFavoriteChange(SummaryData item, index) {
-    logger.d(item);
     widget.onFavoriteChange(item);
     setState(() {
       var list = List.of(items);
@@ -149,7 +145,7 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: 64.w,
                                 child: Text(
                                   items[index].name,
@@ -159,7 +155,7 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
                                   ),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: 24,
                                 child: Icon(
                                   (items[index].curValue > items[index].prevValue)
@@ -171,7 +167,7 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
                                       : colorScheme.red,
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: 64.w,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +187,7 @@ class _HomeSummaryListWidgetState extends State<HomeSummaryListWidget> {
                                   ],
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: 64.w,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,

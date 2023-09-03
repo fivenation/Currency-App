@@ -41,7 +41,7 @@ class CurrencyRemoteDioImpl implements CurrencyRemote {
           "base": base,
           "symbols": [name],
           "date": DateFormat('yyyy-MM-dd')
-              .format(DateTime.now().subtract(const Duration(days: 1))),
+              .format(DateTime.now().subtract(const Duration(days: 2))),
         },
       );
       final res3 = (req3.data["rates"] as Map);

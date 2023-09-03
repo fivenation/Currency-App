@@ -1,6 +1,5 @@
 import 'package:currency_app/domain/models/summary/summary_data.dart';
 import 'package:currency_app/domain/repository/summary_repository.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +22,6 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
       final res = await _repository.getAll(event.base);
       emit(SummaryState.successful(data: res));
     } catch(error) {
-      final save = state;
       emit(SummaryState.error(error: error.toString()));
       emit(state);
     }

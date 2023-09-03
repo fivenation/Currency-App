@@ -32,6 +32,7 @@ import '../../data/sources/summary/local/summary_local_hive.dart' as _i15;
 import '../../data/sources/summary/remote/summary_remote.dart' as _i16;
 import '../../data/sources/summary/remote/summary_remote_impl.dart' as _i17;
 import '../../presentation/navigation/router.dart' as _i3;
+import '../../presentation/pages/currency_page/bloc/currency_bloc.dart' as _i31;
 import '../../presentation/pages/home_page/bloc/summary_bloc.dart' as _i29;
 import '../../presentation/theme/theme_manager.dart' as _i20;
 import '../../utils/l10n/locale_manager.dart' as _i28;
@@ -100,6 +101,8 @@ extension GetItInjectableX on _i1.GetIt {
           await getAsync<_i21.AuthorizationRepository>()),
       dispose: (i) => i.dispose(),
     );
+    gh.singleton<_i31.CurrencyBloc>(
+        _i31.CurrencyBloc(gh<_i26.CurrencyRepository>()));
     return this;
   }
 }

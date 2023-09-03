@@ -1,4 +1,4 @@
-import 'package:currency_app/domain/bloc/authorization/authorization_bloc.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:currency_app/domain/changeNotifiers/base_currency_notifier.dart';
 import 'package:currency_app/domain/dependencies/service_locator.dart';
 import 'package:currency_app/domain/models/summary/summary_data.dart';
@@ -9,7 +9,6 @@ import 'package:currency_app/presentation/pages/home_page/widgets/home_header_wi
 import 'package:currency_app/presentation/pages/home_page/widgets/home_summary_list_widget.dart';
 import 'package:currency_app/presentation/theme/color_scheme.dart';
 import 'package:currency_app/utils/l10n/S.dart';
-import 'package:currency_app/utils/logger.dart';
 import 'package:currency_app/utils/scaffold_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,15 +19,26 @@ class HomePage extends StatelessWidget {
 
   final _navigation = getIt<AppRouter>();
   final _messenger = getIt<Messenger>();
-  final _bloc = getIt<SummaryBloc>()..add(SummaryEvent.load(base: getIt<BaseCurrencyNotifier>().value));
+  final _bloc = getIt<SummaryBloc>()
+    ..add(SummaryEvent.load(base: getIt<BaseCurrencyNotifier>().value));
 
   void changeFavorite(SummaryData item) {
-    logger.d("CHANGE FAVORITE ITEM ${item.name}");
     _bloc.add(SummaryEvent.changeFavorite(data: item));
   }
 
-  void onItemTap(SummaryData item) {
-    logger.d("CLICKED ITEM ${item.name}");
+  void onItemTap(SummaryData item) async {
+    final connectivity = await Connectivity().checkConnectivity();
+    if (connectivity == ConnectivityResult.mobile ||
+        connectivity == ConnectivityResult.wifi) {
+      _navigation.router.pushNamed(
+        RouteNames.currency,
+        pathParameters: {"name": item.name},
+      );
+    }
+  }
+
+  void onSettingsTap() {
+    _navigation.router.pushNamed(RouteNames.preferences);
   }
 
   @override
@@ -43,7 +53,8 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           successful: (data) {
-            final favorites = data.where((element) => element.isFavorite == true).toList();
+            final favorites =
+                data.where((element) => element.isFavorite == true).toList();
             return Scaffold(
               backgroundColor: colorScheme.primary,
               body: SafeArea(
@@ -54,28 +65,34 @@ class HomePage extends StatelessWidget {
                       SliverPersistentHeader(
                         pinned: true,
                         delegate: HomeHeaderWidget(
-                          expandedHeight: favorites.isEmpty?kToolbarHeight:kToolbarHeight+150.h,
+                          expandedHeight: favorites.isEmpty
+                              ? kToolbarHeight
+                              : kToolbarHeight + 150.h,
                           title: S.of(context).home_title,
                           favorites: favorites,
-                          onSettings: () => {},
+                          onSettings: () => onSettingsTap(),
                           onItemTap: (item) => onItemTap(item),
                         ),
                       ),
-                      SliverList(delegate: SliverChildListDelegate([
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              HomeSummaryListWidget(
-                                onItemTap: onItemTap,
-                                items: data,
-                                onFavoriteChange: changeFavorite,
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  HomeSummaryListWidget(
+                                    onItemTap: onItemTap,
+                                    items: data,
+                                    onFavoriteChange: changeFavorite,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],),),
+                      ),
                       SliverFillRemaining(
                         hasScrollBody: false,
                         child: Container(
@@ -102,31 +119,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-/*
-Text(
-                                S.of(context).appTitle,
-                                style: TextStyle(color: colorScheme.primaryText),
-                              ),
-                              Text(
-                                "Base currency: ${getIt<BaseCurrencyNotifier>().value}",
-                                style: TextStyle(color: colorScheme.primaryText),
-                              ),
-                              OutlinedButton(
-                                onPressed: () async => _navigation.router.pushNamed(
-                                  RouteNames.currency,
-                                  pathParameters: {'name': 'USD'},
-                                ),
-                                child: const Text('currency page'),
-                              ),
-                              OutlinedButton(
-                                onPressed: () {
-                                  getIt<AuthorizationBloc>()
-                                      .add(const AuthorizationEvent.logOut());
-                                  _navigation.router.pushNamed(
-                                    RouteNames.landing,
-                                  );
-                                },
-                                child: const Text('LOG OUT'),
-                              ),
- */
